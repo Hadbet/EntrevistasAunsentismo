@@ -39,7 +39,7 @@
 
     <!-- Main -->
     <div id="main">
-        <section style="margin: 40px"  class="main special seccion-transicion" id="seccion1">
+        <section style="margin: 40px" class="main special seccion-transicion" id="seccion1">
             <br>
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
@@ -63,8 +63,7 @@
             </div>
         </section>
 
-        <section style="margin: 40px; display: none" class="seccion seccion-transicion" id="seccion2">
-            <br>
+        <section style="margin: 40px; display: none" class="main special seccion-transicion" id="seccion2">
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
                     <header class="major">
@@ -75,19 +74,22 @@
 
             <div class="row gtr-uniform">
 
-                <div class="col-6 col-12-medium">
+                <div class="col-12 col-12-medium">
                     <h3>Ultimos registros del entrevistado</h3>
-                    <ul>
-                        <li><strong>01/08/2024</strong> : Llego tarde.</li>
-                    </ul>
+                    <div id="historico">
+                        <p><strong>01/08/2024</strong> : Llego tarde.</p>
+                    </div>
                     <code><a href="">Ver expediente del usuario</a></code>
                 </div>
 
-                <div class="col-6 col-12-xsmall">
+                <div class="col-12 col-12-medium">
+                    <hr>
+                </div>
+                <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Fecha de ausencia:</label>
                     <input type="date" name="demo-email" id="txtFechaAusencia" value="" placeholder=""/>
                 </div>
-                <div class="col-6 col-12-xsmall">
+                <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Tipo ausentismo:</label>
                     <select name="demo-category" id="cbTipoAusentismo">
                         <option value="">- Seleccione -</option>
@@ -97,7 +99,7 @@
                         <option value="1">Tomo vacaciones.</option>
                     </select>
                 </div>
-                <div class="col-6 col-12-xsmall">
+                <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Encargado:</label>
                     <select name="demo-category" id="cbEncargado">
                         <option value="">- Seleccione -</option>
@@ -166,7 +168,7 @@
 
 <script>
 
-    var numeroTag,area;
+    var numeroTag, area;
 
     window.onload = function () {
         var boton = document.getElementById("verificar");
@@ -191,12 +193,14 @@
     function verificarNombre() {
         return new Promise(function (resolve) {
             var txtNomina = document.getElementById("txtNomina");
+            var nominaAux;
 
             if (txtNomina.value.trim() === "") {
                 alert("Por favor, ingresa una nómina válida.");
                 resolve(false);
             } else {
-                $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoVerificarUsuario.php?nomina=' + txtNomina.value, function (data) {
+                nominaAux = llenarNomina(txtNomina.value);
+                $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoVerificarUsuario.php?nomina=' + nominaAux, function (data) {
                     if (data && data.data && data.data.length > 0) {
                         document.getElementById("nombreEntrevistado").innerHTML = data.data[0].NomUser;
                         numeroTag = data.data[0].IdTag;
@@ -211,6 +215,16 @@
         });
     }
 
+    function llenarNomina(nomina) {
+        if (nomina.length = 1){return nomina= "0000000"+nomina;}
+        if (nomina.length = 2){return nomina= "000000"+nomina;}
+        if (nomina.length = 3){return nomina= "00000"+nomina;}
+        if (nomina.length = 4){return nomina= "0000"+nomina;}
+        if (nomina.length = 5){return nomina= "000"+nomina;}
+        if (nomina.length = 6){return nomina= "00"+nomina;}
+        if (nomina.length = 7){return nomina= "0"+nomina;}
+        return null;
+    }
 
 
 </script>
