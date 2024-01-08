@@ -79,10 +79,9 @@
 
             <div class="row gtr-uniform">
 
-                <div class="col-12 col-12-medium">
+                <div class="col-12 col-12-medium" id="seccionHistorico">
                     <h3>Ultimos registros del entrevistado</h3>
                     <div id="historico">
-                        <p><strong>01/08/2024</strong> : Llego tarde.</p>
                     </div>
                     <code><a href="">Ver expediente del usuario</a></code>
                 </div>
@@ -222,7 +221,7 @@
                         nomina = nominaAux;
                         document.getElementById("nombreEntrevistado").innerHTML = data.data[0].NomUser;
                         numeroTag = data.data[0].IdTag;
-                        area = data.data[0].NombreWC+" ";
+                        area = data.data[0].NombreWC + " ";
                         resolve(true);
                     } else {
                         Swal.fire({
@@ -234,6 +233,21 @@
                     }
                 });
             }
+        });
+    }
+
+    function historicoUsuario() {
+        var historicosReport = document.getElementById("historico");
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina=' + nomina, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        historicosReport.appendChild("<p><strong>"+data.data[i].FechaAusentismo+"</strong> : "+data.data[i].TipoAusencia+".</p>");
+                    }
+                }else{
+                    document.getElementById("seccionHistorico").style.display="none";
+                }
+            });
         });
     }
 
@@ -270,104 +284,104 @@
         var motivo = document.getElementById('txtMotivo');
         var nominaEntrevistador = "00001606";
         var tag = document.getElementById("txtTag");
-        if (tag.value == numeroTag){
-        if (nomina != "") {
-            if (area != "") {
-                if (fechaAusencia.value != "") {
-                    if (tipoAusentismo.value != "") {
-                        if (encargado.value != "") {
-                            if (motivo.value != "") {
-                                if (nominaEntrevistador.value != "") {
+        if (tag.value == numeroTag) {
+            if (nomina != "") {
+                if (area != "") {
+                    if (fechaAusencia.value != "") {
+                        if (tipoAusentismo.value != "") {
+                            if (encargado.value != "") {
+                                if (motivo.value != "") {
+                                    if (nominaEntrevistador.value != "") {
 
-                                    /*
-                                    document.getElementById('first').style.display = 'none';
-                                    document.getElementById('carga').style.display = 'block';
-                                    document.getElementById('carga').innerHTML = '<div class="loading"><center><img src="images/carga.gif" height="350px"><br/>Un momento, por favor...</center></div>';
+                                        /*
+                                        document.getElementById('first').style.display = 'none';
+                                        document.getElementById('carga').style.display = 'block';
+                                        document.getElementById('carga').innerHTML = '<div class="loading"><center><img src="images/carga.gif" height="350px"><br/>Un momento, por favor...</center></div>';
 
-                                     */
-                                    const data = new FormData();
+                                         */
+                                        const data = new FormData();
 
-                                    data.append('nomina', nomina.trim());
-                                    data.append('area', area.trim());
-                                    data.append('fechaAusencia', fechaAusencia.value);
-                                    data.append('tipoAusentismo', tipoAusentismo.value);
-                                    data.append('encargado', encargado.value);
-                                    data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
-                                    data.append('nominaEntrevistador', nominaEntrevistador);
+                                        data.append('nomina', nomina.trim());
+                                        data.append('area', area.trim());
+                                        data.append('fechaAusencia', fechaAusencia.value);
+                                        data.append('tipoAusentismo', tipoAusentismo.value);
+                                        data.append('encargado', encargado.value);
+                                        data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
+                                        data.append('nominaEntrevistador', nominaEntrevistador);
 
-                                    fetch('dao/daoGuardarEntrevista.php', {
-                                        method: 'POST',
-                                        body: data
-                                    })
-                                        .then(function (response) {
-                                            if (response.ok) {
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Enviado.', showConfirmButton: false, input: 'none',
-                                                    text: 'Registro enviardo.'
-                                                })
-                                            } else {
-                                                throw "Error en la llamada Ajax";
-                                            }
-
+                                        fetch('dao/daoGuardarEntrevista.php', {
+                                            method: 'POST',
+                                            body: data
                                         })
-                                        .then(function (texto) {
-                                            console.log(texto);
-                                        })
-                                        .catch(function (err) {
-                                            console.log(err);
-                                        });
+                                            .then(function (response) {
+                                                if (response.ok) {
+                                                    Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'Enviado.', showConfirmButton: false, input: 'none',
+                                                        text: 'Registro enviardo.'
+                                                    })
+                                                } else {
+                                                    throw "Error en la llamada Ajax";
+                                                }
 
+                                            })
+                                            .then(function (texto) {
+                                                console.log(texto);
+                                            })
+                                            .catch(function (err) {
+                                                console.log(err);
+                                            });
+
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...', showConfirmButton: false, input: 'none',
+                                            text: 'Ingrese la nómina del entrevistador'
+                                        })
+                                    }
                                 } else {
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Oops...', showConfirmButton: false, input: 'none',
-                                        text: 'Ingrese la nómina del entrevistador'
+                                        text: 'Ingrese el motivo'
                                     })
                                 }
                             } else {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...', showConfirmButton: false, input: 'none',
-                                    text: 'Ingrese el motivo'
+                                    text: 'Ingrese el encargado'
                                 })
                             }
                         } else {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...', showConfirmButton: false, input: 'none',
-                                text: 'Ingrese el encargado'
+                                text: 'Ingrese el tipo de ausentismo'
                             })
                         }
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...', showConfirmButton: false, input: 'none',
-                            text: 'Ingrese el tipo de ausentismo'
+                            text: 'Ingrese la fecha'
                         })
                     }
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...', showConfirmButton: false, input: 'none',
-                        text: 'Ingrese la fecha'
+                        text: 'Ingrese la área'
                     })
                 }
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...', showConfirmButton: false, input: 'none',
-                    text: 'Ingrese la área'
+                    text: 'Ingrese la nómina'
                 })
             }
         } else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...', showConfirmButton: false, input: 'none',
-                text: 'Ingrese la nómina'
-            })
-        }
-        }else{
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...', showConfirmButton: false, input: 'none',
