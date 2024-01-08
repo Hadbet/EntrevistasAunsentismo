@@ -269,8 +269,8 @@
         var encargado = document.getElementById('cbEncargado');
         var motivo = document.getElementById('txtMotivo');
         var nominaEntrevistador = "00001606";
-
-
+        var tag = document.getElementById("txtTag");
+        if (tag.value == numeroTag){
         if (nomina != "") {
             if (area != "") {
                 if (fechaAusencia.value != "") {
@@ -365,6 +365,13 @@
                 icon: 'error',
                 title: 'Oops...', showConfirmButton: false, input: 'none',
                 text: 'Ingrese la nómina'
+            })
+        }
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...', showConfirmButton: false, input: 'none',
+                text: 'El número de tag no corresponde con la nomina ingresada.'
             })
         }
     }
