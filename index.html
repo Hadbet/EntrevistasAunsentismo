@@ -223,7 +223,7 @@
                         nomina = nominaAux;
                         document.getElementById("nombreEntrevistado").innerHTML = data.data[0].NomUser;
                         numeroTag = data.data[0].IdTag;
-                        area = data.data[0].NombreWC;
+                        area = data.data[0].NombreWC+" ";
                         resolve(true);
                     } else {
                         Swal.fire({
