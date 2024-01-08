@@ -46,6 +46,13 @@
     <!-- Main -->
     <div id="main">
         <section style="margin: 40px" class="main special seccion-transicion" id="seccion1">
+
+            <div class="row gtr-uniform">
+                <div class="col-12 col-12-xsmall">
+                    <img src="images/entrevista-min.gif" style="margin-bottom: -70px;margin-top: -100px">
+                </div>
+            </div>
+
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
                     <header class="major">
@@ -245,8 +252,8 @@
                     for (var i = 0; i < data.data.length; i++) {
                         historicosReport.innerHTML += "<p><strong>" + data.data[i].FechaAusentismo + "</strong> : " + data.data[i].TipoAusencia + ".</p>";
                     }
-                }else{
-                    document.getElementById("seccionHistorico").style.display="none";
+                } else {
+                    document.getElementById("seccionHistorico").style.display = "none";
                 }
             });
         });
