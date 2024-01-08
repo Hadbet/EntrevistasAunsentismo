@@ -296,6 +296,9 @@
                                     data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
                                     data.append('nominaEntrevistador', nominaEntrevistador);
 
+                                    console.log("INSERT INTO `EntrevistasAusentismo`(`NominaEntrevistador`, `NombreEntrevistado`, `FechaRegistro`, `FechaAusentismo`, `TipoAusencia`, `Motivo`, `Area`, `Encargado`) VALUES " +
+                                        "('$NominaEntrevistador','"+nomina+"','"+"2023/02/02"+"','"+fechaAusencia.value+"','"+tipoAusentismo.value+"','"+motivo.value+"','"+area+"','"+nominaEntrevistador+"')");
+
                                     fetch('dao/daoGuardarEntrevista.php', {
                                         method: 'POST',
                                         body: data
