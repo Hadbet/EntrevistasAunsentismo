@@ -293,7 +293,7 @@
                                     data.append('fechaAusencia', fechaAusencia.value);
                                     data.append('tipoAusentismo', tipoAusentismo.value);
                                     data.append('encargado', encargado.value);
-                                    data.append('motivo', motivo.replace(/["'\\\/]/g, ''));
+                                    data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
                                     data.append('nominaEntrevistador', nominaEntrevistador);
 
                                     fetch('dao/daoGuardarEntrevista.php', {
