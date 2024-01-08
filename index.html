@@ -168,44 +168,45 @@
 
     var numeroTag,area;
 
-    window.onload = function() {
-
+    window.onload = function () {
         var boton = document.getElementById("verificar");
         var seccionUno = document.getElementById("seccion1");
         var seccionDos = document.getElementById("seccion2");
 
-        boton.addEventListener('click', function() {
+        boton.addEventListener('click', function () {
             seccionUno.style.opacity = '0';
-            seccionDos.style.opacity = '1'
+            seccionDos.style.opacity = '1';
 
-            if (verificarNombre){
-                setTimeout(function() {
-                    seccionUno.style.display = 'none';
-                    seccionDos.style.display = 'block';
-                }, 500);
-            }
+            verificarNombre().then(function (esValido) {
+                if (esValido) {
+                    setTimeout(function () {
+                        seccionUno.style.display = 'none';
+                        seccionDos.style.display = 'block';
+                    }, 500);
+                }
+            });
         });
     };
 
-    function verificarNombre(){
+    function verificarNombre() {
+        return new Promise(function (resolve) {
+            var txtNomina = document.getElementById("txtNomina");
 
-        var txtNomina = document.getElementById("txtNomina");
-
-        // Verifica si el campo de la nomina está vacío
-        if (txtNomina.value.trim() === "") {
-            alert("Por favor, ingresa una nómina válida.");
-            return false;
-        }
-
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoVerificarUsuario.php?nomina='+txtNomina.value, function (data) {
-            if (data && data.data && data.data.length > 0) {
-                document.getElementById("nombreEntrevistado").innerHTML = data.data[0].NomUser;
-                numeroTag = data.data[0].IdTag;
-                area = data.data[0].NombreWC;
-                return true;
+            if (txtNomina.value.trim() === "") {
+                alert("Por favor, ingresa una nómina válida.");
+                resolve(false);
             } else {
-                alert("No se encontraron datos para la nómina proporcionada.");
-                return false;
+                $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoVerificarUsuario.php?nomina=' + txtNomina.value, function (data) {
+                    if (data && data.data && data.data.length > 0) {
+                        document.getElementById("nombreEntrevistado").innerHTML = data.data[0].NomUser;
+                        numeroTag = data.data[0].IdTag;
+                        area = data.data[0].NombreWC;
+                        resolve(true);
+                    } else {
+                        alert("No se encontraron datos para la nómina proporcionada.");
+                        resolve(false);
+                    }
+                });
             }
         });
     }
