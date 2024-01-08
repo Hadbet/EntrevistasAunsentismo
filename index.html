@@ -18,6 +18,22 @@
         .seccion-transicion {
             transition: opacity 0.5s ease-in-out;
         }
+
+        .imagenAux{
+            margin-bottom: -70px;margin-top: -100px; width: 100%;
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* Estilos específicos para pantallas grandes */
+            .imagenAux{
+                width: 50%;
+                margin-bottom: -70px;
+                margin-top: -100px;
+            }
+
+            /* Agrega más estilos según sea necesario */
+        }
+
     </style>
 </head>
 <body class="is-preload">
@@ -36,10 +52,12 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="#intro" class="active">Entrevista</a></li>
+            <li><a href="index.html" class="active">Entrevista</a></li>
             <li><a href="#first">Historico</a></li>
             <li><a href="#second">Expedientes</a></li>
+            <li><a href="dashboar.html">DashBoard</a></li>
             <li><a href="#cta">Capacitacion</a></li>
+            <li><a href="Administracion.html">Administracion</a></li>
         </ul>
     </nav>
 
@@ -49,7 +67,7 @@
 
             <div class="row gtr-uniform">
                 <div class="col-12 col-12-xsmall">
-                    <img src="images/entrevista-min.gif" style="margin-bottom: -70px;margin-top: -100px; width: 100%">
+                    <img src="images/entrevista-min.gif" class="imagenAux">
                 </div>
             </div>
 
@@ -102,13 +120,26 @@
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Tipo ausentismo:</label>
-                    <select name="demo-category" id="cbTipoAusentismo">
+                    <select name="demo-category" id="cbTipoAusentismo" onchange="mostrarSeccionTipo()">
                         <option value="">- Seleccione -</option>
-                        <option value="LLego tarde">LLego tarde.</option>
-                        <option value="Problemas de salud">Problemas de salud.</option>
-                        <option value="Problemas personales">Problemas personales.</option>
-                        <option value="Tomo vacaciones">Tomo vacaciones.</option>
+                        <option value="Por qué no me autorizaron vacaciones">Por qué no me autorizaron vacaciones.</option>
+                        <option value="Estaba enfermo y no acudí al IMSS">Estaba enfermo y no acudí al IMSS.</option>
+                        <option value="Cuidado de hijos">Cuidado de hijos.</option>
+                        <option value="Trámite Legal">Trámite Legal.</option>
+                        <option value="Familiar Enfermo">Familiar Enfermo.</option>
+                        <option value="Cambio de domicilio">Cambio de domicilio.</option>
+                        <option value="Me quede dormido">Me quede dormido.</option>
+                        <option value="Por transporte">Por transporte.</option>
+                        <option value="Junta y/o evento escolar">Junta y/o evento escolar.</option>
+                        <option value="Mucho trafico">Mucho trafico.</option>
+                        <option value="Lluvia">Lluvia.</option>
+                        <option value="Falla mecánica">Falla mecánica.</option>
+                        <option value="Otro">Otro.</option>
                     </select>
+                </div>
+                <div class="col-4 col-12-xsmall" id="seccionTipo" style="display: none">
+                    <label style="text-align: center;">Ingrese el tipo:</label>
+                    <input type="text" name="demo-email" id="txtTipo" value="" placeholder=""/>
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Encargado:</label>
@@ -119,8 +150,17 @@
                         <option value="APU - Sergio">APU - Sergio.</option>
                     </select>
                 </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">ShiftLeader:</label>
+                    <select name="demo-category" id="cbShiftLeader">
+                        <option value="">- Seleccione -</option>
+                        <option value="Flor Arriaga">Flor Arriaga.</option>
+                        <option value="Alejandra Martinez">Alejandra Martinez.</option>
+                        <option value="Pamela Gomez">Pamela Gomez.</option>
+                    </select>
+                </div>
                 <div class="col-12">
-                    <label style="text-align: center;">Motivo:</label>
+                    <label style="text-align: center;">Comentarios:</label>
                     <textarea name="demo-message" id="txtMotivo" placeholder="Ingresa el motivo del ausentismo."
                               rows="6"></textarea>
                 </div>
@@ -179,7 +219,19 @@
 
 <script>
 
-    var numeroTag, area, nomina;
+    var numeroTag, area, nomina, banderaTipo;
+    function mostrarSeccionTipo() {
+        var cbTipoAusentismo = document.getElementById("cbTipoAusentismo");
+        var seccionTipo = document.getElementById("seccionTipo");
+
+        if (cbTipoAusentismo.value === "Otro") {
+            seccionTipo.style.display = 'block';
+            banderaTipo = true;
+        } else {
+            seccionTipo.style.display = 'none';
+            banderaTipo = false;
+        }
+    }
 
     window.onload = function () {
         var boton = document.getElementById("verificar");
@@ -292,6 +344,8 @@
         var motivo = document.getElementById('txtMotivo');
         var nominaEntrevistador = "00001606";
         var tag = document.getElementById("txtTag");
+        var tipoOtro = document.getElementById("txtTipo");
+
         if (tag.value == numeroTag) {
             if (nomina != "") {
                 if (area != "") {
@@ -312,7 +366,13 @@
                                         data.append('nomina', nomina.trim());
                                         data.append('area', area.trim());
                                         data.append('fechaAusencia', fechaAusencia.value);
-                                        data.append('tipoAusentismo', tipoAusentismo.value);
+
+                                        if (banderaTipo){
+                                            data.append('tipoAusentismo', tipoOtro.value);
+                                        }else{
+                                            data.append('tipoAusentismo', tipoAusentismo.value);
+                                        }
+
                                         data.append('encargado', encargado.value);
                                         data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
                                         data.append('nominaEntrevistador', nominaEntrevistador);

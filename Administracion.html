@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Entrevistas Ausentismo</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="lib/sweetalert2.css">
+
+    <!-- JavaScript -->
+    <script src="lib/sweetalert2.all.min.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css"/>
+    </noscript>
+    <style>
+        .seccion-transicion {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .imagenAux{
+            margin-bottom: -70px;margin-top: -100px; width: 100%;
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* Estilos específicos para pantallas grandes */
+            .imagenAux{
+                width: 50%;
+                margin-bottom: -70px;
+                margin-top: -100px;
+            }
+
+            /* Agrega más estilos según sea necesario */
+        }
+
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <span class="logo"><img src="images/logo.svg" alt=""/></span>
+        <h1>Entrevistas Ausentismo</h1>
+        <p>Recuerda que es importante mantener informado al trabajador<br/>
+            de todos los datos ingresados en este sistema.</p>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html" class="active">Entrevista</a></li>
+            <li><a href="#first">Historico</a></li>
+            <li><a href="#second">Expedientes</a></li>
+            <li><a href="dashboar.html">DashBoard</a></li>
+            <li><a href="#cta">Capacitacion</a></li>
+            <li><a href="Administracion.html">Administracion</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+        <section style="margin: 40px" class="main special seccion-transicion" id="seccion1">
+
+            <div class="spotlight" style="margin-bottom: 0px;">
+                <div class="content">
+                    <header class="major">
+                        <h2>Conteste el formulario.</h2>
+                    </header>
+                </div>
+            </div>
+
+            <div class="row gtr-uniform">
+                <div class="col-12 col-12-xsmall">
+                    <!-- Contenido de la tabla -->
+                    <table id="miTabla" class="display">
+                        <thead>
+                        <tr>
+                            <th>Columna 1</th>
+                            <th>Columna 2</th>
+                            <!-- Agrega más columnas según sea necesario -->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Los datos se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-12">
+                    <ul class="actions" style="justify-content: center;">
+                        <li><input type="submit" value="Verificar" id="verificar" class="primary"/></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin: 40px; display: none" class="main special seccion-transicion" id="seccion2">
+            <div class="spotlight" style="margin-bottom: 0px;">
+                <div class="content">
+                    <header class="major">
+                        <h2 id="nombreEntrevistado"></h2>
+                    </header>
+                </div>
+            </div>
+
+            <div class="row gtr-uniform">
+
+                <div class="col-12 col-12-medium" id="seccionHistorico">
+                    <h3>Ultimos registros del entrevistado</h3>
+                    <div id="historico">
+                    </div>
+                    <code><a href="">Ver expediente del usuario</a></code>
+                </div>
+
+                <div class="col-12 col-12-medium">
+                    <hr>
+                </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">Fecha de ausencia:</label>
+                    <input type="date" name="demo-email" id="txtFechaAusencia" value="" placeholder=""/>
+                </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">Tipo ausentismo:</label>
+                    <select name="demo-category" id="cbTipoAusentismo" onchange="mostrarSeccionTipo()">
+                        <option value="">- Seleccione -</option>
+                        <option value="Por qué no me autorizaron vacaciones">Por qué no me autorizaron vacaciones.</option>
+                        <option value="Estaba enfermo y no acudí al IMSS">Estaba enfermo y no acudí al IMSS.</option>
+                        <option value="Cuidado de hijos">Cuidado de hijos.</option>
+                        <option value="Trámite Legal">Trámite Legal.</option>
+                        <option value="Familiar Enfermo">Familiar Enfermo.</option>
+                        <option value="Cambio de domicilio">Cambio de domicilio.</option>
+                        <option value="Me quede dormido">Me quede dormido.</option>
+                        <option value="Por transporte">Por transporte.</option>
+                        <option value="Junta y/o evento escolar">Junta y/o evento escolar.</option>
+                        <option value="Mucho trafico">Mucho trafico.</option>
+                        <option value="Lluvia">Lluvia.</option>
+                        <option value="Falla mecánica">Falla mecánica.</option>
+                        <option value="Otro">Otro.</option>
+                    </select>
+                </div>
+                <div class="col-4 col-12-xsmall" id="seccionTipo" style="display: none">
+                    <label style="text-align: center;">Ingrese el tipo:</label>
+                    <input type="text" name="demo-email" id="txtTipo" value="" placeholder=""/>
+                </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">Encargado:</label>
+                    <select name="demo-category" id="cbEncargado">
+                        <option value="">- Seleccione -</option>
+                        <option value="APU - Rhoman">APU - Rhoman.</option>
+                        <option value="APU - Fernando">APU - Fernando.</option>
+                        <option value="APU - Sergio">APU - Sergio.</option>
+                    </select>
+                </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">ShiftLeader:</label>
+                    <select name="demo-category" id="cbShiftLeader">
+                        <option value="">- Seleccione -</option>
+                        <option value="Flor Arriaga">Flor Arriaga.</option>
+                        <option value="Alejandra Martinez">Alejandra Martinez.</option>
+                        <option value="Pamela Gomez">Pamela Gomez.</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label style="text-align: center;">Comentarios:</label>
+                    <textarea name="demo-message" id="txtMotivo" placeholder="Ingresa el motivo del ausentismo."
+                              rows="6"></textarea>
+                </div>
+
+                <div class="col-12 col-12-xsmall">
+                    <label style="text-align: center;">Numero de tag del entrevistado:</label>
+                    <input type="text" name="demo-name" id="txtTag" value="" placeholder="0005618130"/>
+                </div>
+
+                <div class="col-12 col-12-xsmall">
+                    <ul class="actions" style="justify-content: center;">
+                        <li><input type="submit" id="btnEnviar" value="Enviar" class="primary"/></li>
+                        <li><input type="reset" id="btnReset" value="Resetear"/></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <br>
+        <!-- First Section -->
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <h2>Información</h2>
+            <dl class="alt">
+                <dt>Address</dt>
+                <dd>Av. De la Luz No. 24 Int: B 1 y 2 ACC III</dd>
+                <dd>Queretaro, Queretaro 76120 Mexico</dd>
+                <dt>Phone</dt>
+                <dd>(000) 000-0000 x 0000</dd>
+                <dt>Email</dt>
+                <dd><a href="#">information@untitled.tld</a></dd>
+            </dl>
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-linkedin alt"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+            </ul>
+        </section>
+        <p class="copyright">&copy; Grammer Automotive Puebla S.A de C.V. Design: Grammer.</p>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#miTabla').DataTable({
+            ajax: {
+                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoUsuarios.php',
+                dataSrc: 'data'
+            },
+            columns: [
+                { data: 'IdNomina' },
+                { data: 'APU' }
+                // Agrega más columnas según sea necesario
+            ]
+        });
+    });
+</script>
+
+</body>
+</html>
