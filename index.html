@@ -191,12 +191,6 @@
                         seccionUno.style.display = 'none';
                         seccionDos.style.display = 'block';
                     }, 500);
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...', showConfirmButton: false, input: 'none',
-                        text: 'El correo ingresado del encargado es incorrecto no pertenece al dominio de grammer "@grammer.com"'
-                    })
                 }
             });
         });
@@ -221,7 +215,11 @@
                         area = data.data[0].NombreWC;
                         resolve(true);
                     } else {
-                        alert("No se encontraron datos para la nómina proporcionada.");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...', showConfirmButton: false, input: 'none',
+                            text: 'El correo ingresado del encargado es incorrecto no pertenece al dominio de grammer "@grammer.com"'
+                        })
                         resolve(false);
                     }
                 });
