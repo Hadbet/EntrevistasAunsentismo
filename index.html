@@ -46,7 +46,6 @@
     <!-- Main -->
     <div id="main">
         <section style="margin: 40px" class="main special seccion-transicion" id="seccion1">
-            <br>
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
                     <header class="major">
@@ -73,7 +72,7 @@
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
                     <header class="major">
-                        <h2 id="nombreEntrevistado">Hadbet Ayari Altamirano Martinez.</h2>
+                        <h2 id="nombreEntrevistado"></h2>
                     </header>
                 </div>
             </div>
@@ -99,19 +98,19 @@
                     <label style="text-align: center;">Tipo ausentismo:</label>
                     <select name="demo-category" id="cbTipoAusentismo">
                         <option value="">- Seleccione -</option>
-                        <option value="1">LLego tarde.</option>
-                        <option value="1">Problemas de salud.</option>
-                        <option value="1">Problemas personales.</option>
-                        <option value="1">Tomo vacaciones.</option>
+                        <option value="LLego tarde">LLego tarde.</option>
+                        <option value="Problemas de salud">Problemas de salud.</option>
+                        <option value="Problemas personales">Problemas personales.</option>
+                        <option value="Tomo vacaciones">Tomo vacaciones.</option>
                     </select>
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Encargado:</label>
                     <select name="demo-category" id="cbEncargado">
                         <option value="">- Seleccione -</option>
-                        <option value="1">APU - Rhoman.</option>
-                        <option value="1">APU - Fernando.</option>
-                        <option value="1">APU - Sergio.</option>
+                        <option value="APU - Rhoman">APU - Rhoman.</option>
+                        <option value="APU - Fernando">APU - Fernando.</option>
+                        <option value="APU - Sergio">APU - Sergio.</option>
                     </select>
                 </div>
                 <div class="col-12">
@@ -158,7 +157,7 @@
                 <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
             </ul>
         </section>
-        <p class="copyright">&copy; Untitled. Design: Grammer.</p>
+        <p class="copyright">&copy; Grammer Automotive Puebla S.A de C.V. Design: Grammer.</p>
     </footer>
 
 </div>
@@ -323,49 +322,49 @@
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Oops...', showConfirmButton: false, input: 'none',
-                                        text: 'Ingrese el tipo de retorno'
+                                        text: 'Ingrese la nómina del entrevistador'
                                     })
                                 }
                             } else {
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Oops...', showConfirmButton: false, input: 'none',
-                                    text: 'Ingrese el tipo'
+                                    text: 'Ingrese el motivo'
                                 })
                             }
                         } else {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...', showConfirmButton: false, input: 'none',
-                                text: 'Ingrese la dirección'
+                                text: 'Ingrese el encargado'
                             })
                         }
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...', showConfirmButton: false, input: 'none',
-                            text: 'Ingrese la empresa'
+                            text: 'Ingrese el tipo de ausentismo'
                         })
                     }
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...', showConfirmButton: false, input: 'none',
-                        text: 'Ingrese la unidad de medida'
+                        text: 'Ingrese la fecha'
                     })
                 }
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...', showConfirmButton: false, input: 'none',
-                    text: 'Ingrese la cantidad'
+                    text: 'Ingrese la área'
                 })
             }
         } else {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...', showConfirmButton: false, input: 'none',
-                text: 'Ingrese la descripción'
+                text: 'Ingrese la nómina'
             })
         }
     }
