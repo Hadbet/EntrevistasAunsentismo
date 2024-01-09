@@ -81,20 +81,23 @@
                     <ul class="statistics">
                         <li class="style3">
                             <span class="icon solid fa-code-branch"></span>
-                            <strong id="txtApu1"></strong> Apu - Roman
+                                <strong id="txtApu1"></strong> Apu 1 - Sergio<br>
+                            <button onclick="apuGraficas(1)" style="background-color: #00398e; margin-top: 20px" class="primary">Entrar</button>
                         </li>
                         <li class="style4">
                             <span class="icon fa-folder-open"></span>
-                            <strong id="txtApu2"></strong> Apu - Sergio
+                            <strong id="txtApu2"></strong> Apu 2 - Rhoman<br>
+                            <button onclick="apuGraficas(2)" style="background-color: #00398e; margin-top: 20px" class="primary">Entrar</button>
                         </li>
                         <li class="style5">
                             <span class="icon solid fa-signal"></span>
-                            <strong id="txtApu3"></strong> Apu - Fernando
+                            <strong id="txtApu3"></strong> Apu 3 - Fernando<br>
+                            <button onclick="apuGraficas(3)" style="background-color: #00398e; margin-top: 20px" class="primary">Entrar</button>
                         </li>
                     </ul>
                 </div>
 
-                <div class="col-12 col-12-xsmall">
+                <div class="col-12 col-12-xsmall" id="seccionShift" style="display: none">
                     <div class="spotlight" style="margin-bottom: 0px;">
                         <div class="content">
                             <header class="major">
@@ -105,7 +108,7 @@
                     <canvas id="myChart3"></canvas>
                 </div>
 
-                <div class="col-6 col-12-xsmall">
+                <div class="col-6 col-12-xsmall" id="seccionEncargado" style="display: none">
                     <div class="spotlight" style="margin-bottom: 0px;">
                         <div class="content">
                             <header class="major">
@@ -116,7 +119,7 @@
                     <canvas id="myChart"></canvas>
                 </div>
 
-                <div class="col-6 col-12-xsmall">
+                <div class="col-6 col-12-xsmall" id="seccionTipo" style="display: none">
                     <div class="spotlight" style="margin-bottom: 0px;">
                         <div class="content">
                             <header class="major">
@@ -125,90 +128,6 @@
                         </div>
                     </div>
                     <canvas id="myChart2"></canvas>
-                </div>
-
-                <div class="col-12">
-                    <ul class="actions" style="justify-content: center;">
-                        <li><input type="submit" value="Verificar" id="verificar" class="primary"/></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section style="margin: 40px; display: none" class="main special seccion-transicion" id="seccion2">
-            <div class="spotlight" style="margin-bottom: 0px;">
-                <div class="content">
-                    <header class="major">
-                        <h2 id="nombreEntrevistado"></h2>
-                    </header>
-                </div>
-            </div>
-
-            <div class="row gtr-uniform">
-
-                <div class="col-12 col-12-medium" id="seccionHistorico">
-                    <h3>Ultimos registros del entrevistado</h3>
-                    <div id="historico">
-                    </div>
-                    <code><a href="">Ver expediente del usuario</a></code>
-                </div>
-
-                <div class="col-12 col-12-medium">
-                    <hr>
-                </div>
-                <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Fecha de ausencia:</label>
-                    <input type="date" name="demo-email" id="txtFechaAusencia" value="" placeholder=""/>
-                </div>
-                <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Tipo ausentismo:</label>
-                    <select name="demo-category" id="cbTipoAusentismo" onchange="mostrarSeccionTipo()">
-                        <option value="">- Seleccione -</option>
-                        <option value="Por qué no me autorizaron vacaciones">Por qué no me autorizaron vacaciones.
-                        </option>
-                        <option value="Estaba enfermo y no acudí al IMSS">Estaba enfermo y no acudí al IMSS.</option>
-                        <option value="Cuidado de hijos">Cuidado de hijos.</option>
-                        <option value="Trámite Legal">Trámite Legal.</option>
-                        <option value="Familiar Enfermo">Familiar Enfermo.</option>
-                        <option value="Cambio de domicilio">Cambio de domicilio.</option>
-                        <option value="Me quede dormido">Me quede dormido.</option>
-                        <option value="Por transporte">Por transporte.</option>
-                        <option value="Junta y/o evento escolar">Junta y/o evento escolar.</option>
-                        <option value="Mucho trafico">Mucho trafico.</option>
-                        <option value="Lluvia">Lluvia.</option>
-                        <option value="Falla mecánica">Falla mecánica.</option>
-                        <option value="Otro">Otro.</option>
-                    </select>
-                </div>
-                <div class="col-4 col-12-xsmall" id="seccionTipo" style="display: none">
-                    <label style="text-align: center;">Ingrese el tipo:</label>
-                    <input type="text" name="demo-email" id="txtTipo" value="" placeholder=""/>
-                </div>
-                <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Encargado:</label>
-                    <select name="demo-category" id="cbEncargado">
-                        <option value="">- Seleccione -</option>
-                        <option value="APU - Rhoman">APU - Rhoman.</option>
-                        <option value="APU - Fernando">APU - Fernando.</option>
-                        <option value="APU - Sergio">APU - Sergio.</option>
-                    </select>
-                </div>
-                <div class="col-12">
-                    <label style="text-align: center;">Comentarios:</label>
-                    <textarea name="demo-message" id="txtMotivo" placeholder="Ingresa el motivo del ausentismo."
-                              rows="6"></textarea>
-                </div>
-
-                <div class="col-12 col-12-xsmall">
-                    <label style="text-align: center;">Numero de tag del entrevistado:</label>
-                    <input type="text" name="demo-name" id="txtTag" value="" placeholder="0005618130"/>
-                </div>
-
-                <div class="col-12 col-12-xsmall">
-                    <ul class="actions" style="justify-content: center;">
-                        <li><input type="submit" id="btnEnviar" value="Enviar" class="primary"/></li>
-                        <li><input type="reset" id="btnReset" value="Resetear"/></li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -279,10 +198,9 @@
             });
         });
     }
-
-    function contadorApu() {
+    function contadorGrafica(apu) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 2, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 2 +'&APU='+apu, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -293,7 +211,7 @@
                     }
 
                     // Llama a la función para inicializar o actualizar el gráfico
-                    actualizarGrafico(labels, dataValues);
+                    actualizarGrafico(labels, dataValues, 'myChart3');
 
                     resolve();  // Resuelve la promesa después de completar la operación
                 } else {
@@ -304,20 +222,22 @@
         });
     }
 
-    function actualizarGrafico(labels, dataValues) {
-        const ctx = document.getElementById('myChart');
+    function actualizarGrafico(labels, dataValues, chartId) {
+        const ctx = document.getElementById(chartId);
 
         // Verifica si ya hay un gráfico existente y destrúyelo antes de crear uno nuevo
-        if (window.myChart instanceof Chart) {
-            window.myChart.destroy();
+        var existingChart = window[chartId + '_chart'];
+        if (existingChart instanceof Chart) {
+            existingChart.destroy();
         }
 
-        window.myChart = new Chart(ctx, {
-            type: 'pie',
+        // Asigna una nueva variable de gráfico específica para este chartId
+        window[chartId + '_chart'] = new Chart(ctx, {
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: '# of Votes',
+                    label: 'ShiftLeader',
                     data: dataValues,
                     borderWidth: 1
                 }]
@@ -328,42 +248,141 @@
         });
     }
 
-    // Llama a la función contadorApu para obtener los datos y actualizar el gráfico
-    contadorApu();
 
-    const ctx2 = document.getElementById('myChart2');
+    // Contador Grafica 2
 
-    new Chart(ctx2, {
-        type: 'pie',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {}
+    function contadorGraficaDos(apu) {
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 3 +'&APU='+apu, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    var labels = [];
+                    var dataValues = [];
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        labels.push(data.data[i].TipoAusencia);
+                        dataValues.push(data.data[i].contador);
+                    }
+
+                    // Llama a la función para inicializar o actualizar el gráfico
+                    actualizarGraficoDos(labels, dataValues, 'myChart2');
+
+                    resolve();  // Resuelve la promesa después de completar la operación
+                } else {
+                    // Puedes manejar el caso en que no haya datos si es necesario
+                    resolve();
+                }
+            });
+        });
+    }
+
+    function actualizarGraficoDos(labels, dataValues, chartId) {
+        const ctx2 = document.getElementById(chartId);
+
+        // Verifica si ya hay un gráfico existente y destrúyelo antes de crear uno nuevo
+        var existingChart = window[chartId + '_chart'];
+        if (existingChart instanceof Chart) {
+            existingChart.destroy();
         }
-    });
 
-    const ctx3 = document.getElementById('myChart3');
+        // Asigna una nueva variable de gráfico específica para este chartId
+        window[chartId + '_chart'] = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'ShiftLeader',
+                    data: dataValues,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {}
+            }
+        });
+    }
 
-    new Chart(ctx3, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {}
+    // Llama a la función contadorGraficaDos para obtener los datos y actualizar el gráfico
+
+
+    // Contador Grafica 3
+
+    function contadorGraficaTres(apu) {
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 4+'&APU='+apu, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    var labels = [];
+                    var dataValues = [];
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        labels.push(data.data[i].Area);
+                        dataValues.push(data.data[i].contador);
+                    }
+
+                    // Llama a la función para inicializar o actualizar el gráfico
+                    actualizarGraficoTres(labels, dataValues, 'myChart');
+
+                    resolve();  // Resuelve la promesa después de completar la operación
+                } else {
+                    // Puedes manejar el caso en que no haya datos si es necesario
+                    resolve();
+                }
+            });
+        });
+    }
+
+    function actualizarGraficoTres(labels, dataValues, chartId) {
+        const ctx3 = document.getElementById(chartId);
+
+        // Verifica si ya hay un gráfico existente y destrúyelo antes de crear uno nuevo
+        var existingChart = window[chartId + '_chart'];
+        if (existingChart instanceof Chart) {
+            existingChart.destroy();
         }
-    });
+
+        // Asigna una nueva variable de gráfico específica para este chartId
+        window[chartId + '_chart'] = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'ShiftLeader',
+                    data: dataValues,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {}
+            }
+        });
+    }
+
+    function apuGraficas(apu) {
+
+        document.getElementById("seccionShift").style.display = 'block';
+        document.getElementById("seccionEncargado").style.display = 'block';
+        document.getElementById("seccionTipo").style.display = 'block';
+
+        switch (apu) {
+            case 1:
+                contadorGraficaTres(apu);
+                contadorGraficaDos(apu);
+                contadorGrafica(apu);
+                break;
+            case 2:
+                contadorGraficaTres(apu);
+                contadorGraficaDos(apu);
+                contadorGrafica(apu);
+                break;
+            case 3:
+                contadorGraficaTres(apu);
+                contadorGraficaDos(apu);
+                contadorGrafica(apu);
+                break;
+            default:
+                console.log("Ejecutando código para otro valor de apu");
+        }
+    }
+
 
 </script>
 
