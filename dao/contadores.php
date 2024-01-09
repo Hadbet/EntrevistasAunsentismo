@@ -28,6 +28,11 @@ function Contador($Ruta,$APU)
     if ($Ruta == 4){
         $query = "SELECT COUNT(`IdEntrevista`) as contador, `Area` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `Area`;";
     }
+
+    if ($Ruta == 5){
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `NominaEntrevistado` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `NominaEntrevistado`;";
+    }
+
     $datos = mysqli_query($conex, $query);
 
     $resultado = mysqli_fetch_all($datos, MYSQLI_ASSOC);
