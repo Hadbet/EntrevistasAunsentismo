@@ -22,7 +22,7 @@ function actualizarVacas($Nomina,$Nombre,$APU,$Puesto,$Password,$Rol) {
         $result = mysqli_query($conex, $updateQuery);
         echo 2;
     } else {
-        $insertQuery = "INSERT INTO `UsuariosEntrevistas`(`Nombre`, `APU`, `Puesto`, `Rol`, `Password`) VALUES ('$Nombre','$APU','$Puesto','$Rol','$Password')";
+        $insertQuery = "INSERT INTO `UsuariosEntrevistas`(`Nombre`, `APU`, `Puesto`, `Rol`, `Password`,`IdNomina`) VALUES ('$Nombre','$APU','$Puesto','$Rol','$Password','$Nomina')";
         $result = mysqli_query($conex, $insertQuery);
         echo 1;
     }
