@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Entrevistas Ausentismo</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="lib/sweetalert2.css">
+
+    <!-- JavaScript -->
+    <script src="lib/sweetalert2.all.min.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css"/>
+    </noscript>
+    <style>
+        .seccion-transicion {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .imagenAux {
+            margin-bottom: -70px;
+            margin-top: -100px;
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 768px) {
+            /* Estilos específicos para pantallas grandes */
+            .imagenAux {
+                width: 50%;
+                margin-bottom: -70px;
+                margin-top: -100px;
+            }
+
+            /* Agrega más estilos según sea necesario */
+        }
+
+    </style>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <span class="logo"><img src="images/logo.svg" alt=""/></span>
+        <h1>Entrevistas Ausentismo</h1>
+        <p>Recuerda que es importante mantener informado al trabajador<br/>
+            de todos los datos ingresados en este sistema.</p>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html">Entrevista</a></li>
+            <li><a href="#first">Historico</a></li>
+            <li><a href="Expedientes.html" class="active">Expedientes</a></li>
+            <li><a href="dashboar.html">DashBoard</a></li>
+            <li><a href="#cta">Capacitacion</a></li>
+            <li><a href="Administracion.html">Administracion</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <
+    <div id="main">
+
+        <section class="main special seccion-transicion" id="seccion1">
+
+            <div class="row gtr-uniform">
+                <div class="col-12 col-12-xsmall">
+                    <h2 style="text-align: center;">Nómina:</h2>
+                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345"/>
+                </div>
+
+                <div class="col-12">
+                    <ul class="actions" style="justify-content: center;">
+                        <li><input type="submit" value="Verificar" id="verificar" class="primary"/></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div id="seccion2" class="seccion-transicion" style="display: none">
+            <!-- First Section -->
+            <section id="" class="main special">
+                <header class="major">
+                    <h2 id="txtNombre"></h2>
+                </header>
+                <h2>Informacion General</h2>
+                <br>
+                <div class="table-wrapper">
+                    <table class="alt">
+                        <tbody>
+                        <tr>
+                            <td>Numero de nomina</td>
+                            <td id="txtNumeroNomina"></td>
+                        </tr>
+                        <tr>
+                            <td>Numero de tag</td>
+                            <td id="txtNumeroTag"></td>
+                        </tr>
+                        <tr>
+                            <td>Centro de costos</td>
+                            <td id="txtCentroCostos"></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre centro de costos</td>
+                            <td id="txtNombreCentroCostos"></td>
+                        </tr>
+                        <tr>
+                            <td>Work Center</td>
+                            <td id="txtWorkCenter"></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre Work Center</td>
+                            <td id="txtNombreWorkCenter"></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha Antiguedad</td>
+                            <td id="txtFechaAntiguedad"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ul class="statistics">
+                    <li class="style1">
+                        <span class="icon solid fa-code-branch"></span>
+                        <strong id="txtVacaciones"></strong> Vacaciones
+                    </li>
+                    <li class="style2">
+                        <span class="icon fa-folder-open"></span>
+                        <strong id="txtFondoAhorro"></strong> Fondo Ahorro
+                    </li>
+                    <li class="style3">
+                        <span class="icon solid fa-signal"></span>
+                        <strong id="txtCajaAhorro"></strong> Caja Ahorro
+                    </li>
+                    <li class="style4">
+                        <span class="icon solid fa-laptop"></span>
+                        <strong id="txtPendientePrestamo"></strong> Pendiente Prestamo
+                    </li>
+                    <li class="style5">
+                        <span class="icon fa-gem"></span>
+                        <strong id="txtPuntosKaizen"></strong> Puntos Kaizen
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Second Section -->
+            <section id="" class="main special">
+                <header class="major">
+                    <h2>Ausentismos</h2>
+                </header>
+
+            </section>
+
+            <section id="" class="main special">
+                <header class="major">
+                    <h2>Cursos concluidos</h2>
+                </header>
+
+                <ul class="features">
+                    <li>
+                        <span class="icon solid major style1 fa-code"></span>
+                        <h3>HTML Basico</h3>
+                        <p>Se concluyo el <strong>10 de marzon de 2023</strong> con una calificacion de 9.8.</p>
+                    </li>
+                    <li>
+                        <span class="icon major style3 fa-copy"></span>
+                        <h3>Documentacion Tecnica</h3>
+                        <p>Se concluyo el <strong>10 de marzon de 2023</strong> con una calificacion de 9.8.</p>
+                    </li>
+                    <li>
+                        <span class="icon major style5 fa-gem"></span>
+                        <h3>SAP Basico</h3>
+                        <p>Se concluyo el <strong>10 de marzon de 2023</strong> con una calificacion de 9.8.</p>
+                    </li>
+                </ul>
+
+
+                <footer class="major">
+                    <ul class="actions special">
+                        <li><a href="generic.html" class="button">Learn More</a></li>
+                    </ul>
+                </footer>
+            </section>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <h2>Información</h2>
+            <dl class="alt">
+                <dt>Address</dt>
+                <dd>Av. De la Luz No. 24 Int: B 1 y 2 ACC III</dd>
+                <dd>Queretaro, Queretaro 76120 Mexico</dd>
+                <dt>Phone</dt>
+                <dd>(000) 000-0000 x 0000</dd>
+                <dt>Email</dt>
+                <dd><a href="#">information@untitled.tld</a></dd>
+            </dl>
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-linkedin alt"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+            </ul>
+        </section>
+        <p class="copyright">&copy; Grammer Automotive Puebla S.A de C.V. Design: Grammer.</p>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+
+    window.onload = function () {
+        var boton = document.getElementById("verificar");
+        var seccionUno = document.getElementById("seccion1");
+        var seccionDos = document.getElementById("seccion2");
+
+        boton.addEventListener('click', function () {
+            seccionUno.style.opacity = '0';
+            seccionDos.style.opacity = '1';
+
+            verificarNombre().then(function (esValido) {
+                if (esValido) {
+                    setTimeout(function () {
+                        seccionUno.style.display = 'none';
+                        seccionDos.style.display = 'block';
+                    }, 500);
+                    historicoUsuario();
+                }
+            });
+        });
+    };
+
+    function verificarNombre() {
+        return new Promise(function (resolve) {
+            var txtNomina = document.getElementById("txtNomina");
+            var nominaAux;
+
+            if (txtNomina.value.trim() === "") {
+                alert("Por favor, ingresa una nómina válida.");
+                resolve(false);
+            } else {
+                nominaAux = llenarNomina(txtNomina.value);
+                $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoUsuario.php?usuario=' + nominaAux, function (data) {
+                    if (data && data.data && data.data.length > 0) {
+
+                        document.getElementById('txtNombre').innerHTML = data.data[0].NomUser;
+                        document.getElementById('txtNombreCentroCostos').innerHTML = data.data[0].NombreCC;
+                        document.getElementById('txtCentroCostos').value = data.data[0].IdCentroCostos;
+                        document.getElementById('txtTag').value = data.data[0].IdTag;
+                        document.getElementById('txtWorkCenter').value = data.data[0].WC;
+                        document.getElementById('txtNombreWorkCenter').value = data.data[0].NombreWC;
+                        document.getElementById('txtNomina').value = data.data[0].IdUser;
+                        tag = data.data[0].IdTag;
+                        orden(tag);
+                        ordenTag(tag);
+                    } else {
+
+                    }
+
+                });
+            }
+        });
+    }
+
+
+    function orden(tag) {
+        $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoVacaciones.php?usuario=' + id, function (data) {
+            document.getElementById('vacaciones').innerHTML = data.data[0].DiasVacaciones;
+
+            var fechaAux = data.data[0].FechaIngreso;
+            let divicionFecha = fechaAux.split('-');
+            ano = divicionFecha[0];
+            mes = divicionFecha[1];
+            dia = divicionFecha[2];
+
+            if (mes == '01') {
+                mes = 'enero';
+            }
+            if (mes == '02') {
+                mes = 'febrero';
+            }
+            if (mes == '03') {
+                mes = 'marzo';
+            }
+            if (mes == '04') {
+                mes = 'abril';
+            }
+            if (mes == '05') {
+                mes = 'mayo';
+            }
+            if (mes == '06') {
+                mes = 'junio';
+            }
+            if (mes == '07') {
+                mes = 'julio';
+            }
+            if (mes == '08') {
+                mes = 'agosto';
+            }
+            if (mes == '09') {
+                mes = 'septiembre';
+            }
+            if (mes == '10') {
+                mes = 'octubre';
+            }
+            if (mes == '11') {
+                mes = 'noviembre';
+            }
+            if (mes == '12') {
+                mes = 'diciembre';
+            }
+
+            document.getElementById('txtFechaAntiguedad').innerHTML = dia + " de " + mes + " del " + ano;
+        });
+    }
+
+    function ordenTag(tag) {
+
+        $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoCajaAhorro.php?usuario=' + tag, function (data) {
+            document.getElementById('txtCajaAhorro').innerHTML = data.data[0].AhorroTotal;
+            document.getElementById('txtPendientePrestamo').innerHTML = data.data[0].PendientePrestamo;
+            document.getElementById('txtFondoAhorro').innerHTML = data.data[0].FondoAhorro;
+
+        });
+
+
+    }
+
+</script>
+
+</body>
+</html>
