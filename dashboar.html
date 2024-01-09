@@ -280,24 +280,56 @@
         });
     }
 
+    function contadorApu() {
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 2, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    var labels = [];
+                    var dataValues = [];
 
+                    for (var i = 0; i < data.data.length; i++) {
+                        labels.push(data.data[i].ShiftLeader);
+                        dataValues.push(data.data[i].contador);
+                    }
 
-    const ctx = document.getElementById('myChart');
+                    // Llama a la función para inicializar o actualizar el gráfico
+                    actualizarGrafico(labels, dataValues);
 
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {}
+                    resolve();  // Resuelve la promesa después de completar la operación
+                } else {
+                    // Puedes manejar el caso en que no haya datos si es necesario
+                    resolve();
+                }
+            });
+        });
+    }
+
+    function actualizarGrafico(labels, dataValues) {
+        const ctx = document.getElementById('myChart');
+
+        // Verifica si ya hay un gráfico existente y destrúyelo antes de crear uno nuevo
+        if (window.myChart instanceof Chart) {
+            window.myChart.destroy();
         }
-    });
+
+        window.myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: dataValues,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {}
+            }
+        });
+    }
+
+    // Llama a la función contadorApu para obtener los datos y actualizar el gráfico
+    contadorApu();
 
     const ctx2 = document.getElementById('myChart2');
 
