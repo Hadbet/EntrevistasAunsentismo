@@ -145,9 +145,6 @@
                     <label style="text-align: center;">Encargado:</label>
                     <select name="demo-category" id="cbEncargado">
                         <option value="">- Seleccione -</option>
-                        <option value="APU 1 - Sergio">APU - Sergio.</option>
-                        <option value="APU 2 - Rhoman">APU - Rhoman.</option>
-                        <option value="APU 3 - Fernando">APU - Fernando.</option>
                     </select>
                 </div>
                 <div class="col-4 col-12-xsmall">
@@ -218,14 +215,14 @@
 <script src="assets/js/main.js"></script>
 
 <script>
-
-    function llenarProceso() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php?APU='+, function (data) {
-            var select = document.getElementById("proceso");
+    llenarAPU();
+    function llenarAPU() {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php', function (data) {
+            var select = document.getElementById("cbEncargado");
             for (var i = 0; i < data.data.length; i++) {
                 var createOption = document.createElement("option");
-                createOption.text = data.data[i].Proceso;
-                createOption.value = data.data[i].Proceso;
+                createOption.text = data.data[i].Nombre;
+                createOption.value = data.data[i].Puesto;
                 select.appendChild(createOption);
             }
         });

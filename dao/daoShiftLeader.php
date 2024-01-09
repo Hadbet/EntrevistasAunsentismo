@@ -2,14 +2,16 @@
 
 include_once('db/db_RH.php');
 
-Contador();
+$APU = $_GET['APU'];
 
-function Contador()
+Contador($APU);
+
+function Contador($APU)
 {
     $con = new LocalConector();
     $conex = $con->conectar();
 
-    $datos = mysqli_query($conex, "SELECT * FROM `UsuariosEntrevistas` WHERE `Puesto` like '%APU%';");
+    $datos = mysqli_query($conex, "SELECT `ShiftLeader` FROM `Encargados` WHERE `APU` like "%$APU%";");
 
     $resultado = mysqli_fetch_all($datos, MYSQLI_ASSOC);
     echo json_encode(array("data" => $resultado));
