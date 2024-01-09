@@ -58,12 +58,12 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="index.html" class="active">Entrevista</a></li>
+            <li><a href="index.html">Entrevista</a></li>
             <li><a href="#first">Historico</a></li>
             <li><a href="#second">Expedientes</a></li>
             <li><a href="dashboar.html">DashBoard</a></li>
             <li><a href="#cta">Capacitacion</a></li>
-            <li><a href="Administracion.html">Administracion</a></li>
+            <li><a href="Administracion.html" class="active">Administracion</a></li>
         </ul>
     </nav>
 
@@ -79,10 +79,12 @@
                 </div>
             </div>
 
+            <hr>
+
             <div class="row gtr-uniform">
                 <div class="col-2 col-12-xsmall">
                     <label style="text-align: center;">Nómina:</label>
-                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345"/>
+                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345" onkeyup="verificarConEnter(event)"/>
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Nombre:</label>
@@ -95,6 +97,7 @@
                         <option value="APU - Rhoman">APU - Rhoman.</option>
                         <option value="APU - Fernando">APU - Fernando.</option>
                         <option value="APU - Sergio">APU - Sergio.</option>
+                        <option value="NA">NA</option>
                     </select>
                 </div>
                 <div class="col-4 col-12-xsmall">
@@ -127,7 +130,7 @@
                     </ul>
                 </div>
             </div>
-
+            <hr>
             <div class="row gtr-uniform">
                 <div class="col-12 col-12-xsmall">
                     <!-- Contenido de la tabla -->
@@ -328,6 +331,18 @@
                 text: 'Ingrese el nómina'
             })
         }
+    }
+
+    function verificarConEnter(event) {
+        // Verifica si la tecla presionada es "Enter"
+        if (event.keyCode === 13) {
+            buscarNombre(llenarNomina(document.getElementById("txtNomina").value));
+        }
+    }
+    function buscarNombre(nomina) {
+        $.getJSON('https://arketipo.mx/Controlling/BonoSalida/dao/DaoNombre.php?nomina='+nomina, function (data) {
+            document.getElementById("txtNombre").value = data.data[0].NomUser;
+        });
     }
 
     function llenarNomina(nomina) {

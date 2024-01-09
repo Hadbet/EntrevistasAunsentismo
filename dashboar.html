@@ -59,7 +59,7 @@
             <li><a href="#second">Expedientes</a></li>
             <li><a href="dashboar.html" class="active">DashBoard</a></li>
             <li><a href="#cta">Capacitacion</a></li>
-            <li><a href="#cta">Administracion</a></li>
+            <li><a href="Administracion.html">Administracion</a></li>
         </ul>
     </nav>
 
@@ -81,15 +81,15 @@
                     <ul class="statistics">
                         <li class="style3">
                             <span class="icon solid fa-code-branch"></span>
-                            <strong>5,120</strong> Apu - Roman
+                            <strong id="txtApu1"></strong> Apu - Roman
                         </li>
                         <li class="style4">
                             <span class="icon fa-folder-open"></span>
-                            <strong>8,192</strong> Apu - Sergio
+                            <strong id="txtApu2"></strong> Apu - Sergio
                         </li>
                         <li class="style5">
                             <span class="icon solid fa-signal"></span>
-                            <strong>2,048</strong> Apu - Fernando
+                            <strong id="txtApu3"></strong> Apu - Fernando
                         </li>
                     </ul>
                 </div>
@@ -253,6 +253,35 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+    contadorApu();
+    function contadorApu() {
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 1, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    for (var i = 0; i < data.data.length; i++) {
+
+                        if (data.data[i].Encargado === "APU - Sergio"){
+                            document.getElementById("txtApu1").innerHTML = data.data[i].contador;
+                        }
+
+                        if (data.data[i].Encargado === "APU - Rhoman"){
+                            document.getElementById("txtApu2").innerHTML = data.data[i].contador;
+                        }
+
+                        if (data.data[i].Encargado === "APU - Fernando"){
+                            document.getElementById("txtApu3").innerHTML = data.data[i].contador;
+                        }
+
+                    }
+                } else {
+
+                }
+            });
+        });
+    }
+
+
+
     const ctx = document.getElementById('myChart');
 
     new Chart(ctx, {
