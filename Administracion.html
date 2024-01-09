@@ -260,7 +260,7 @@
 
                                  */
                                 const data = new FormData();
-
+                                console.log(nomina.value.trim().padStart(8, '0'));
                                 data.append('nomina', nomina.value.trim().padStart(8, '0'));
                                 data.append('nombre', nombre.value.trim());
                                 data.append('apu', apu.value.trim());
