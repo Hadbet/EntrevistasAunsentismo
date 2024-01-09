@@ -13,7 +13,7 @@ function Contador($Ruta,$APU)
     $APU = 'APU '+$APU;
 
     if ($Ruta == 1){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador, `Encargado` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `Encargado`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `Encargado` FROM `EntrevistasAusentismo` GROUP BY `Encargado`;";
     }
 
     if ($Ruta == 2){
