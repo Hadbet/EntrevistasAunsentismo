@@ -226,7 +226,7 @@
     }
 
     function llenarShift() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU='+document.getElementById("cbEncargado").VALUE, function (data) {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU='+document.getElementById("cbEncargado").value, function (data) {
             var selectS = document.getElementById("cbShiftLeader");
             for (var i = 0; i < data.data.length; i++) {
                 var createOptionS = document.createElement("option");
