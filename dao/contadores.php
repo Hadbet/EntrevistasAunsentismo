@@ -11,7 +11,7 @@ function Contador($Ruta,$APU)
 {
     $con = new LocalConector();
     $conex = $con->conectar();
-    //$APU = 'APU '+$APU;
+    $APU = 'APU '.$APU;
 
     if ($Ruta == 1){
         $query = "SELECT COUNT(`IdEntrevista`) as contador, `Encargado` FROM `EntrevistasAusentismo` GROUP BY `Encargado`;";
