@@ -142,7 +142,7 @@
                     <input type="text" name="demo-email" id="txtTipo" value="" placeholder=""/>
                 </div>
                 <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Encargado:</label>
+                    <label style="text-align: center;">APU :</label>
                     <select name="demo-category" id="cbEncargado">
                         <option value="">- Seleccione -</option>
                     </select>
@@ -151,9 +151,6 @@
                     <label style="text-align: center;">ShiftLeader:</label>
                     <select name="demo-category" id="cbShiftLeader">
                         <option value="">- Seleccione -</option>
-                        <option value="Flor Arriaga">Flor Arriaga.</option>
-                        <option value="Alejandra Martinez">Alejandra Martinez.</option>
-                        <option value="Pamela Gomez">Pamela Gomez.</option>
                     </select>
                 </div>
                 <div class="col-12">
@@ -224,6 +221,18 @@
                 createOption.text = data.data[i].Nombre;
                 createOption.value = data.data[i].Puesto;
                 select.appendChild(createOption);
+            }
+        });
+    }
+
+    function llenarShift() {
+        $.getJSON('https://arketipo.mx/Metrologia/inicio/dao/daoProceso.php?APU='+document.getElementById("cbEncargado").VALUE, function (data) {
+            var selectS = document.getElementById("cbShiftLeader");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOptionS = document.createElement("option");
+                createOptionS.text = data.data[i].Proceso;
+                createOptionS.value = data.data[i].Proceso;
+                selectS.appendChild(createOptionS);
             }
         });
     }
