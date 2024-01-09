@@ -67,7 +67,7 @@
     <div id="main">
         <section style="margin: 40px" class="main special seccion-transicion" id="seccion1">
 
-            <div class="spotlight" style="margin-bottom: 0px;">
+            <div class="spotlight" style="margin-bottom: 0px;    margin-top: -5%;">
                 <div class="content">
                     <header class="major">
                         <h2>Resumen General.</h2>
@@ -129,7 +129,6 @@
                     </div>
                     <canvas id="myChart2"></canvas>
                 </div>
-
                 <div class="col-12 col-12-xsmall" id="seccionNomina" style="display: none">
                     <div class="spotlight" style="margin-bottom: 0px;">
                         <div class="content">
@@ -378,7 +377,7 @@
                     var dataValues = [];
 
                     for (var i = 0; i < data.data.length; i++) {
-                        labels.push(data.data[i].Area);
+                        labels.push(data.data[i].NominaEntrevistado);
                         dataValues.push(data.data[i].contador);
                     }
 
@@ -450,7 +449,6 @@
                 console.log("Ejecutando código para otro valor de apu");
         }
     }
-
 
 </script>
 

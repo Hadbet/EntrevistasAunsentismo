@@ -219,6 +219,18 @@
 
 <script>
 
+    function llenarProceso() {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php?APU='+, function (data) {
+            var select = document.getElementById("proceso");
+            for (var i = 0; i < data.data.length; i++) {
+                var createOption = document.createElement("option");
+                createOption.text = data.data[i].Proceso;
+                createOption.value = data.data[i].Proceso;
+                select.appendChild(createOption);
+            }
+        });
+    }
+
     var numeroTag, area, nomina, banderaTipo;
     function mostrarSeccionTipo() {
         var cbTipoAusentismo = document.getElementById("cbTipoAusentismo");
