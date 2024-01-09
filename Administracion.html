@@ -19,13 +19,15 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        .imagenAux{
-            margin-bottom: -70px;margin-top: -100px; width: 100%;
+        .imagenAux {
+            margin-bottom: -70px;
+            margin-top: -100px;
+            width: 100%;
         }
 
         @media only screen and (min-width: 768px) {
             /* Estilos específicos para pantallas grandes */
-            .imagenAux{
+            .imagenAux {
                 width: 50%;
                 margin-bottom: -70px;
                 margin-top: -100px;
@@ -36,10 +38,8 @@
 
     </style>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"/>
 
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 
 </head>
 <body class="is-preload">
@@ -69,91 +69,27 @@
 
     <!-- Main -->
     <div id="main">
-        <section style="margin: 40px" class="main special seccion-transicion" id="seccion1">
+        <section class="main special seccion-transicion" id="seccion1">
 
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
                     <header class="major">
-                        <h2>Conteste el formulario.</h2>
+                        <h2>Usuarios.</h2>
                     </header>
                 </div>
             </div>
 
             <div class="row gtr-uniform">
-                <div class="col-12 col-12-xsmall">
-                    <!-- Contenido de la tabla -->
-                    <table id="miTabla" class="display">
-                        <thead>
-                        <tr>
-                            <th>Columna 1</th>
-                            <th>Columna 2</th>
-                            <!-- Agrega más columnas según sea necesario -->
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!-- Los datos se agregarán aquí dinámicamente -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="col-12">
-                    <ul class="actions" style="justify-content: center;">
-                        <li><input type="submit" value="Verificar" id="verificar" class="primary"/></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section style="margin: 40px; display: none" class="main special seccion-transicion" id="seccion2">
-            <div class="spotlight" style="margin-bottom: 0px;">
-                <div class="content">
-                    <header class="major">
-                        <h2 id="nombreEntrevistado"></h2>
-                    </header>
-                </div>
-            </div>
-
-            <div class="row gtr-uniform">
-
-                <div class="col-12 col-12-medium" id="seccionHistorico">
-                    <h3>Ultimos registros del entrevistado</h3>
-                    <div id="historico">
-                    </div>
-                    <code><a href="">Ver expediente del usuario</a></code>
-                </div>
-
-                <div class="col-12 col-12-medium">
-                    <hr>
+                <div class="col-2 col-12-xsmall">
+                    <label style="text-align: center;">Nómina:</label>
+                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345"/>
                 </div>
                 <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Fecha de ausencia:</label>
-                    <input type="date" name="demo-email" id="txtFechaAusencia" value="" placeholder=""/>
+                    <label style="text-align: center;">Nombre:</label>
+                    <input type="number" name="demo-name" id="txtNombre" value="" placeholder="Juan Perez Black"/>
                 </div>
-                <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Tipo ausentismo:</label>
-                    <select name="demo-category" id="cbTipoAusentismo" onchange="mostrarSeccionTipo()">
-                        <option value="">- Seleccione -</option>
-                        <option value="Por qué no me autorizaron vacaciones">Por qué no me autorizaron vacaciones.</option>
-                        <option value="Estaba enfermo y no acudí al IMSS">Estaba enfermo y no acudí al IMSS.</option>
-                        <option value="Cuidado de hijos">Cuidado de hijos.</option>
-                        <option value="Trámite Legal">Trámite Legal.</option>
-                        <option value="Familiar Enfermo">Familiar Enfermo.</option>
-                        <option value="Cambio de domicilio">Cambio de domicilio.</option>
-                        <option value="Me quede dormido">Me quede dormido.</option>
-                        <option value="Por transporte">Por transporte.</option>
-                        <option value="Junta y/o evento escolar">Junta y/o evento escolar.</option>
-                        <option value="Mucho trafico">Mucho trafico.</option>
-                        <option value="Lluvia">Lluvia.</option>
-                        <option value="Falla mecánica">Falla mecánica.</option>
-                        <option value="Otro">Otro.</option>
-                    </select>
-                </div>
-                <div class="col-4 col-12-xsmall" id="seccionTipo" style="display: none">
-                    <label style="text-align: center;">Ingrese el tipo:</label>
-                    <input type="text" name="demo-email" id="txtTipo" value="" placeholder=""/>
-                </div>
-                <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">Encargado:</label>
+                <div class="col-2 col-12-xsmall">
+                    <label style="text-align: center;">APU:</label>
                     <select name="demo-category" id="cbEncargado">
                         <option value="">- Seleccione -</option>
                         <option value="APU - Rhoman">APU - Rhoman.</option>
@@ -162,33 +98,59 @@
                     </select>
                 </div>
                 <div class="col-4 col-12-xsmall">
-                    <label style="text-align: center;">ShiftLeader:</label>
-                    <select name="demo-category" id="cbShiftLeader">
+                    <label style="text-align: center;">Puesto:</label>
+                    <select name="demo-category" id="cbPuesto">
                         <option value="">- Seleccione -</option>
-                        <option value="Flor Arriaga">Flor Arriaga.</option>
-                        <option value="Alejandra Martinez">Alejandra Martinez.</option>
-                        <option value="Pamela Gomez">Pamela Gomez.</option>
+                        <option value="Supervisor">Supervisor.</option>
+                        <option value="Coordinador">Coordinador.</option>
+                        <option value="ShiftLeader">ShiftLeader.</option>
+                        <option value="RH">Recursos Humanos.</option>
+                        <option value="RH">APU.</option>
                     </select>
                 </div>
+                <div class="col-6 col-12-xsmall">
+                    <label style="text-align: center;">Contraseña:</label>
+                    <input type="number" name="demo-name" id="txtPassword" value="" placeholder="Grammer1"/>
+                </div>
+                <div class="col-6 col-12-xsmall">
+                    <label style="text-align: center;">Rol:</label>
+                    <select name="demo-category" id="cbRol">
+                        <option value="">- Seleccione -</option>
+                        <option value="1">Administrador.</option>
+                        <option value="2">Entrevistador.</option>
+                    </select>
+                </div>
+
                 <div class="col-12">
-                    <label style="text-align: center;">Comentarios:</label>
-                    <textarea name="demo-message" id="txtMotivo" placeholder="Ingresa el motivo del ausentismo."
-                              rows="6"></textarea>
-                </div>
-
-                <div class="col-12 col-12-xsmall">
-                    <label style="text-align: center;">Numero de tag del entrevistado:</label>
-                    <input type="text" name="demo-name" id="txtTag" value="" placeholder="0005618130"/>
-                </div>
-
-                <div class="col-12 col-12-xsmall">
                     <ul class="actions" style="justify-content: center;">
-                        <li><input type="submit" id="btnEnviar" value="Enviar" class="primary"/></li>
-                        <li><input type="reset" id="btnReset" value="Resetear"/></li>
+                        <li><input type="submit" value="Enviar" id="verificar" class="primary"/></li>
                     </ul>
                 </div>
             </div>
+
+            <div class="row gtr-uniform">
+                <div class="col-12 col-12-xsmall">
+                    <!-- Contenido de la tabla -->
+                    <table id="miTabla">
+                        <thead>
+                        <tr>
+                            <th>Nomina</th>
+                            <th>Nombre</th>
+                            <th>APU</th>
+                            <th>Puesto</th>
+                            <th>Rol</th>
+                            <th>Password</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Los datos se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
+
+
         <br>
         <!-- First Section -->
 
@@ -227,21 +189,141 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script type="text/javascript" charset="utf8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 
 <script>
-    $(document).ready(function () {
+    function inicializarTabla() {
         $('#miTabla').DataTable({
             ajax: {
                 url: 'https://arketipo.mx/RH/Entrevistas/dao/daoUsuarios.php',
                 dataSrc: 'data'
             },
             columns: [
-                { data: 'IdNomina' },
-                { data: 'APU' }
-                // Agrega más columnas según sea necesario
+                {data: 'IdNomina'},
+                {data: 'Nombre'},
+                {data: 'APU'},
+                {data: 'Puesto'},
+                {data: 'Rol'},
+                {data: 'Password'}
             ]
         });
+    }
+
+    // Llama a la función al cargar la página
+    $(document).ready(function () {
+        inicializarTabla();
     });
+
+    // Ejemplo de cómo podrías llamar a la función para actualizar la tabla
+    function actualizarTabla() {
+        // Destruye la tabla actual antes de volver a inicializarla
+        $('#miTabla').DataTable().destroy();
+        inicializarTabla();
+    }
+
+    // Ejemplo de cómo podrías llamar a la función para actualizar la tabla después de un evento, por ejemplo, un botón
+    $('#actualizarTablaBtn').on('click', function () {
+        actualizarTabla();
+    });
+
+    function enviar() {
+
+        var nomina = document.getElementById('txtNomina');
+        var nombre = document.getElementById('txtNombre');
+        var apu = document.getElementById('cbEncargado');
+        var puesto = document.getElementById('cbPuesto');
+        var password = document.getElementById('txtPassword');
+        var rol = document.getElementById("cbRol");
+
+        if (nomina.value.trim() !== '') {
+            if (nombre.value.trim() !== '') {
+                if (apu.value.trim() !== '') {
+                    if (puesto.value.trim() !== '') {
+                        if (password.value.trim() !== '') {
+                            if (rol.value.trim() !== '') {
+                                /*
+                                document.getElementById('first').style.display = 'none';
+                                document.getElementById('carga').style.display = 'block';
+                                document.getElementById('carga').innerHTML = '<div class="loading"><center><img src="images/carga.gif" height="350px"><br/>Un momento, por favor...</center></div>';
+
+                                 */
+                                const data = new FormData();
+
+                                data.append('nomina', nomina.value.trim());
+                                data.append('nombre', nombre.value.trim());
+                                data.append('apu', apu.value.trim());
+                                data.append('Puesto', puesto.value.trim());
+                                data.append('Password', password.value.trim());
+                                data.append('Rol', rol.value.trim());
+
+                                fetch('dao/daoUsuariosGuardar.php', {
+                                    method: 'POST',
+                                    body: data
+                                })
+                                    .then(function (response) {
+                                        if (response.ok) {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Enviado.', showConfirmButton: false, input: 'none',
+                                                text: 'Registro enviardo.'
+                                            })
+                                        } else {
+                                            throw "Error en la llamada Ajax";
+                                        }
+
+                                    })
+                                    .then(function (texto) {
+                                        console.log(texto);
+                                    })
+                                    .catch(function (err) {
+                                        console.log(err);
+                                    });
+
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...', showConfirmButton: false, input: 'none',
+                                    text: 'Ingrese el rol'
+                                })
+                            }
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...', showConfirmButton: false, input: 'none',
+                                text: 'Ingrese el password'
+                            })
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...', showConfirmButton: false, input: 'none',
+                            text: 'Ingrese el puesto'
+                        })
+                    }
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...', showConfirmButton: false, input: 'none',
+                        text: 'Ingrese APU'
+                    })
+                }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...', showConfirmButton: false, input: 'none',
+                    text: 'Ingrese la nombre'
+                })
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...', showConfirmButton: false, input: 'none',
+                text: 'Ingrese el nómina'
+            })
+        }
+    }
 </script>
 
 </body>
