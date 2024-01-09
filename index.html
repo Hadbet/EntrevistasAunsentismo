@@ -345,6 +345,7 @@
         var nominaEntrevistador = "00001606";
         var tag = document.getElementById("txtTag");
         var tipoOtro = document.getElementById("txtTipo");
+        var shiftleader = document.getElementById("cbShiftLeader");
 
         if (tag.value == numeroTag) {
             if (nomina != "") {
@@ -376,6 +377,7 @@
                                         data.append('encargado', encargado.value);
                                         data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
                                         data.append('nominaEntrevistador', nominaEntrevistador);
+                                        data.append('shiftLeader', shiftleader.value);
 
                                         fetch('dao/daoGuardarEntrevista.php', {
                                             method: 'POST',
