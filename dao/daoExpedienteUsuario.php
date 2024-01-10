@@ -4,9 +4,9 @@ include_once('db/db_RH.php');
 
 $Nomina = $_GET['nomina'];
 
-Contador($Nomina);
+ContadorExpediente($Nomina);
 
-function Contador($Nomina)
+function ContadorExpediente($Nomina)
 {
     $con = new LocalConector();
     $conex = $con->conectar();

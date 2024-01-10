@@ -159,6 +159,27 @@
 
                 <canvas id="myChart"></canvas>
 
+                <div class="row gtr-uniform">
+                    <div class="col-12 col-12-xsmall">
+                        <!-- Contenido de la tabla -->
+                        <table id="miTabla">
+                            <thead>
+                            <tr>
+                                <th>Nomina Entrevistador</th>
+                                <th>Fecha Reporte</th>
+                                <th>Tipo Ausencia</th>
+                                <th>Comentarios</th>
+                                <th>Area</th>
+                                <th>ShiftLeader</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Los datos se agregarán aquí dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
             </section>
 
             <section id="" class="main special">
@@ -230,6 +251,28 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+
+    function inicializarTabla() {
+        $('#miTabla').DataTable({
+            ajax: {
+                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php',
+                dataSrc: 'data'
+            },
+            columns: [
+                {data: 'NominaEntrevistador'},
+                {data: 'FechaAusentismo'},
+                {data: 'TipoAusencia'},
+                {data: 'Motivo'},
+                {data: 'Area'},
+                {data: 'ShiftLeader'}
+            ]
+        });
+    }
+
+    // Llama a la función al cargar la página
+    $(document).ready(function () {
+        inicializarTabla();
+    });
 
     window.onload = function () {
         var boton = document.getElementById("verificar");
