@@ -21,17 +21,21 @@
 
         @media only screen and (min-width: 768px) {
             /* Estilos específicos para pantallas grandes */
-            .imagenAux{
+            .imagenAux {
                 width: 50%;
                 margin-bottom: -90px !important;
                 margin-top: -250px;
             }
 
-            .botonFlotante{
+            .logoAux {
+                width: 20%;
+            }
+
+            .botonFlotante {
                 display: none;
             }
 
-            .menuNavegacion{
+            .menuNavegacion {
                 display: none;
             }
 
@@ -39,7 +43,12 @@
         }
 
         @media only screen and (max-width: 600px) {
-            .imagenAux{
+
+            .logoAux {
+                width: 50%;
+            }
+
+            .imagenAux {
                 margin-top: -25px;
                 width: 100%;
             }
@@ -103,7 +112,7 @@
 
     <!-- Header -->
     <header id="header" class="alt">
-        <span class="logo"><img src="images/logo.svg" alt=""/></span>
+        <span class="logo"><img class="logoAux" src="images/logo_blanco.png" alt=""/></span>
         <h1>Entrevistas Ausentismo</h1>
         <p>Recuerda que es importante mantener informado al trabajador<br/>
             de todos los datos ingresados en este sistema.</p>
@@ -182,7 +191,8 @@
                     <label style="text-align: center;">Tipo ausentismo:</label>
                     <select name="demo-category" id="cbTipoAusentismo" onchange="mostrarSeccionTipo()">
                         <option value="">- Seleccione -</option>
-                        <option value="Por qué no me autorizaron vacaciones">Por qué no me autorizaron vacaciones.</option>
+                        <option value="Por qué no me autorizaron vacaciones">Por qué no me autorizaron vacaciones.
+                        </option>
                         <option value="Estaba enfermo y no acudí al IMSS">Estaba enfermo y no acudí al IMSS.</option>
                         <option value="Cuidado de hijos">Cuidado de hijos.</option>
                         <option value="Trámite Legal">Trámite Legal.</option>
@@ -279,6 +289,7 @@
     }
 
     llenarAPU();
+
     function llenarAPU() {
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoApu.php', function (data) {
             var select = document.getElementById("cbEncargado");
@@ -292,7 +303,7 @@
     }
 
     function llenarShift() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU='+document.getElementById("cbEncargado").value, function (data) {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
             var selectS = document.getElementById("cbShiftLeader");
             selectS.innerHTML = "";
             for (var i = 0; i < data.data.length; i++) {
@@ -305,6 +316,7 @@
     }
 
     var numeroTag, area, nomina, banderaTipo;
+
     function mostrarSeccionTipo() {
         var cbTipoAusentismo = document.getElementById("cbTipoAusentismo");
         var seccionTipo = document.getElementById("seccionTipo");
@@ -453,9 +465,9 @@
                                         data.append('area', area.trim());
                                         data.append('fechaAusencia', fechaAusencia.value);
 
-                                        if (banderaTipo){
+                                        if (banderaTipo) {
                                             data.append('tipoAusentismo', tipoOtro.value);
-                                        }else{
+                                        } else {
                                             data.append('tipoAusentismo', tipoAusentismo.value);
                                         }
 

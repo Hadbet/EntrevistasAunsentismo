@@ -19,18 +19,10 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        .imagenAux {
-            margin-bottom: -70px;
-            margin-top: -100px;
-            width: 100%;
-        }
-
         @media only screen and (min-width: 768px) {
-            /* Estilos específicos para pantallas grandes */
-            .imagenAux {
-                width: 50%;
-                margin-bottom: -70px;
-                margin-top: -100px;
+
+            .logoAux {
+                width: 20%;
             }
 
             .botonFlotante{
@@ -45,6 +37,11 @@
         }
 
         @media only screen and (max-width: 600px) {
+
+            .logoAux {
+                width: 50%;
+            }
+
             .botonFlotante {
                 display: block;
                 position: fixed;
@@ -103,7 +100,7 @@
 
     <!-- Header -->
     <header id="header" class="alt">
-        <span class="logo"><img src="images/logo.svg" alt=""/></span>
+        <span class="logo"><img class="logoAux" src="images/logo_blanco.png" alt=""/></span>
         <h1>Entrevistas Ausentismo</h1>
         <p>Recuerda que es importante mantener informado al trabajador<br/>
             de todos los datos ingresados en este sistema.</p>
