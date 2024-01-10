@@ -26,6 +26,10 @@
             width: 100%;
         }
 
+        .clear {
+            clear: both;
+        }
+
         @media only screen and (min-width: 768px) {
             /* Estilos específicos para pantallas grandes */
             .imagenAux {
@@ -37,9 +41,52 @@
             /* Agrega más estilos según sea necesario */
         }
 
+        @media only screen and (max-width: 600px) {
+            .botonFlotante {
+                display: block;
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                background-color: #333;
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+                border: none;
+                border-radius: 50%;
+                text-align: center; /* Centrar el contenido horizontalmente */
+                line-height: 1.5; /* Ajustar la altura de línea para centrar verticalmente */
+            }
+
+            .menuNavegacion {
+                display: none;
+                position: fixed;
+                top: 40px;
+                left: 10px;
+                background-color: #333;
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .menuNavegacion a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                margin-bottom: 8px;
+            }
+        }
+
     </style>
 </head>
 <body class="is-preload">
+
+<button class="botonFlotante" onclick="toggleMenu()">☰</button>
+
+<div class="menuNavegacion" id="menuNavegacion">
+    <a href="#">Inicio</a>
+    <a href="#">Acerca de</a>
+    <a href="#">Servicios</a>
+    <a href="#">Contacto</a>
+</div>
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -65,7 +112,7 @@
     </nav>
 
     <!-- Main -->
-    <
+
     <div id="main">
 
         <section class="main special seccion-transicion" id="seccion1">
@@ -152,38 +199,9 @@
                 </ul>
             </section>
 
-            <!-- Second Section -->
-            <section id="" class="main special">
-                <header class="major">
-                    <h2>Ausentismos</h2>
-                </header>
-
-                <canvas id="myChart"></canvas>
-
-                <div class="row gtr-uniform">
-                    <div class="col-12 col-12-xsmall">
-                        <!-- Contenido de la tabla -->
-                        <table id="miTabla">
-                            <thead>
-                            <tr>
-                                <th>Nomina Entrevistador</th>
-                                <th>Fecha Reporte</th>
-                                <th>Tipo Ausencia</th>
-                                <th>Comentarios</th>
-                                <th>Area</th>
-                                <th>ShiftLeader</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!-- Los datos se agregarán aquí dinámicamente -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </section>
 
             <section id="" class="main special">
+                <hr>
                 <header class="major">
                     <h2>Cursos concluidos</h2>
                 </header>
@@ -205,16 +223,39 @@
                         <p>Se concluyo el <strong>10 de marzon de 2023</strong> con una calificacion de 9.8.</p>
                     </li>
                 </ul>
+            </section>
 
-
-                <footer class="major">
-                    <ul class="actions special">
-                        <li><a href="generic.html" class="button">Learn More</a></li>
-                    </ul>
-                </footer>
+            <!-- Second Section -->
+            <section id="" class="main special">
+                <hr>
+                <header class="major">
+                    <h2>Ausentismos</h2>
+                </header>
+                <canvas id="myChart"></canvas>
             </section>
         </div>
 
+        <section class="main special seccion-transicion" style="display: none" id="tablaSeccion">
+            <div class="row gtr-uniform">
+                <div class="col-12 col-12-xsmall">
+                    <table id="miTabla" style="margin: 40px">
+                        <thead>
+                        <tr>
+                            <th>Nomina Entrevistador</th>
+                            <th>Fecha Reporte</th>
+                            <th>Tipo Ausencia</th>
+                            <th>Comentarios</th>
+                            <th>Area</th>
+                            <th>ShiftLeader</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Los datos se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Footer -->
@@ -255,11 +296,16 @@
 
 <script>
 
+    function toggleMenu() {
+        var menu = document.getElementById("menuNavegacion");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
     function inicializarTabla(nomina) {
-        console.log('https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina='+nomina);
+        document.getElementById("tablaSeccion").style.display='block';
         $('#miTabla').DataTable({
             ajax: {
-                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina='+nomina,
+                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina=' + nomina,
                 dataSrc: 'data'
             },
             columns: [
@@ -425,8 +471,8 @@
 
     function contadorGrafica(nomina) {
         return new Promise(function (resolve) {
-            console.log('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 +'&APU='+nomina)
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 +'&APU='+nomina, function (data) {
+            console.log('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 + '&APU=' + nomina)
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 + '&APU=' + nomina, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
