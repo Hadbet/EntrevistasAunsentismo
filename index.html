@@ -312,12 +312,12 @@
 
     function llenarSuper() {
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
-            var selectS = document.getElementById("cbShiftLeader");
+            var selectS = document.getElementById("cbSupervisor");
             selectS.innerHTML = "";
             for (var i = 0; i < data.data.length; i++) {
                 var createOptionS = document.createElement("option");
-                createOptionS.text = data.data[i].ShiftLeader;
-                createOptionS.value = data.data[i].ShiftLeader;
+                createOptionS.text = data.data[i].Supervisor;
+                createOptionS.value = data.data[i].Supervisor;
                 selectS.appendChild(createOptionS);
             }
         });
