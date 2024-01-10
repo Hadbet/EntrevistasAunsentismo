@@ -49,12 +49,13 @@
                 left: 10px;
                 background-color: #333;
                 color: white;
-                padding: 10px;
+                padding: 20px;
+                height: 51px;
                 cursor: pointer;
                 border: none;
                 border-radius: 50%;
                 text-align: center; /* Centrar el contenido horizontalmente */
-                line-height: 1.5; /* Ajustar la altura de línea para centrar verticalmente */
+                line-height: 0.3; /* Ajustar la altura de línea para centrar verticalmente */
             }
 
             .menuNavegacion {
@@ -70,8 +71,12 @@
             .menuNavegacion a {
                 display: block;
                 color: white;
+                text-decoration: none !important;
+                margin-bottom: 10px;
+            }
+
+            .menuNavegacion a:hover {
                 text-decoration: none;
-                margin-bottom: 8px;
             }
         }
 
@@ -82,10 +87,12 @@
 <button class="botonFlotante" onclick="toggleMenu()">☰</button>
 
 <div class="menuNavegacion" id="menuNavegacion">
-    <a href="#">Inicio</a>
-    <a href="#">Acerca de</a>
-    <a href="#">Servicios</a>
-    <a href="#">Contacto</a>
+    <a href="index.html">Entrevista</a>
+    <a href="#first">Historico</a>
+    <a href="Expedientes.html" class="active">Expedientes</a>
+    <a href="dashboar.html">DashBoard</a>
+    <a href="#cta">Capacitacion</a>
+    <a href="Administracion.html">Administracion</a>
 </div>
 
 <!-- Wrapper -->
