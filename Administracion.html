@@ -210,6 +210,69 @@
             </div>
         </section>
 
+        <section class="main special seccion-transicion" >
+
+            <div class="spotlight" style="margin-bottom: 0px;">
+                <div class="content">
+                    <header class="major">
+                        <h2>Usuarios.</h2>
+                    </header>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row gtr-uniform">
+                <div class="col-2 col-12-xsmall">
+                    <label style="text-align: center;">ID:</label>
+                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345" onkeyup="verificarConEnter(event)"/>
+                </div>
+                <div class="col-2 col-12-xsmall">
+                    <label style="text-align: center;">APU:</label>
+                    <select name="demo-category" id="cbEncargado">
+                        <option value="">- Seleccione -</option>
+                        <option value="APU 1">APU 1.</option>
+                        <option value="APU 2">APU 2.</option>
+                        <option value="APU 3">APU 3.</option>
+                        <option value="NA">NA</option>
+                    </select>
+                </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">Supervisor:</label>
+                    <input type="password" name="demo-name" id="txtPassword" value="" placeholder="Grammer1"/>
+                </div>
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">ShiftLeader:</label>
+                    <input type="password" name="demo-name" id="txtPassword" value="" placeholder="Grammer1"/>
+                </div>
+
+                <div class="col-12">
+                    <ul class="actions" style="justify-content: center;">
+                        <li><input type="submit" value="Enviar" id="verificarDos" class="primary"/></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row gtr-uniform">
+                <div class="col-12 col-12-xsmall">
+                    <!-- Contenido de la tabla -->
+                    <table id="miTablaDos">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>APU</th>
+                            <th>Supervisor</th>
+                            <th>ShiftLeader</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Los datos se agregarán aquí dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
 
         <br>
         <!-- First Section -->
@@ -277,9 +340,25 @@
         });
     }
 
+    function inicializarTablaDos() {
+        $('#miTablaDos').DataTable({
+            ajax: {
+                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoEncargados.php',
+                dataSrc: 'data'
+            },
+            columns: [
+                {data: 'IdEncargado'},
+                {data: 'APU'},
+                {data: 'Supervisor'},
+                {data: 'ShiftLeader'}
+            ]
+        });
+    }
+
     // Llama a la función al cargar la página
     $(document).ready(function () {
         inicializarTabla();
+        inicializarTablaDos();
     });
 
     // Ejemplo de cómo podrías llamar a la función para actualizar la tabla
