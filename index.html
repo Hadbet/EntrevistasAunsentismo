@@ -19,16 +19,12 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        .imagenAux{
-            margin-bottom: -70px;margin-top: -100px; width: 100%;
-        }
-
         @media only screen and (min-width: 768px) {
             /* Estilos específicos para pantallas grandes */
             .imagenAux{
                 width: 50%;
-                margin-bottom: -70px;
-                margin-top: -100px;
+                margin-bottom: -90px !important;
+                margin-top: -250px;
             }
 
             .botonFlotante{
@@ -45,6 +41,7 @@
         @media only screen and (max-width: 600px) {
             .imagenAux{
                 margin-top: -25px;
+                width: 100%;
             }
 
             .botonFlotante {
@@ -478,6 +475,7 @@
                                                         title: 'Enviado.', showConfirmButton: false, input: 'none',
                                                         text: 'Registro enviardo.'
                                                     })
+                                                    location.reload();
                                                 } else {
                                                     throw "Error en la llamada Ajax";
                                                 }
