@@ -25,11 +25,11 @@
                 width: 20%;
             }
 
-            .botonFlotante{
+            .botonFlotante {
                 display: none;
             }
 
-            .menuNavegacion{
+            .menuNavegacion {
                 display: none;
             }
 
@@ -139,7 +139,8 @@
             <div class="row gtr-uniform">
                 <div class="col-2 col-12-xsmall">
                     <label style="text-align: center;">Nómina:</label>
-                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345" onkeyup="verificarConEnter(event)"/>
+                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345"
+                           onkeyup="verificarConEnter(event)"/>
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Nombre:</label>
@@ -210,7 +211,7 @@
             </div>
         </section>
 
-        <section class="main special seccion-transicion" >
+        <section class="main special seccion-transicion">
 
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
@@ -225,30 +226,32 @@
             <div class="row gtr-uniform">
                 <div class="col-2 col-12-xsmall">
                     <label style="text-align: center;">ID:</label>
-                    <input type="number" name="demo-name" id="txtNomina" value="" placeholder="00012345" onkeyup="verificarConEnter(event)"/>
+                    <input type="number" name="demo-name" id="txtIdEncargados" value="" placeholder="00012345"
+                           onkeyup="verificarConEnter(event)"/>
                 </div>
                 <div class="col-2 col-12-xsmall">
                     <label style="text-align: center;">APU:</label>
-                    <select name="demo-category" id="cbEncargado">
+                    <select name="demo-category" id="cbApuEncargados">
                         <option value="">- Seleccione -</option>
                         <option value="APU 1">APU 1.</option>
                         <option value="APU 2">APU 2.</option>
                         <option value="APU 3">APU 3.</option>
-                        <option value="NA">NA</option>
                     </select>
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">Supervisor:</label>
-                    <input type="password" name="demo-name" id="txtPassword" value="" placeholder="Grammer1"/>
+                    <input type="text" name="demo-name" id="txtSupervisorEncargados" value="" placeholder="Grammer1"/>
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">ShiftLeader:</label>
-                    <input type="password" name="demo-name" id="txtPassword" value="" placeholder="Grammer1"/>
+                    <input type="text" name="demo-name" id="txtShiftLeaderEncargados" value="" placeholder="Grammer1"/>
                 </div>
 
                 <div class="col-12">
                     <ul class="actions" style="justify-content: center;">
-                        <li><input type="submit" value="Enviar" id="verificarDos" class="primary"/></li>
+                        <li><input type="submit" value="Agregar o Actualizar" id="verificarDos" class="primary"/></li>
+                        <li><input type="submit" value="Eliminar" id="eliminarDos" class="primary"
+                                   style="background-color: #ea5455"/></li>
                     </ul>
                 </div>
             </div>
@@ -343,7 +346,7 @@
     function inicializarTablaDos() {
         $('#miTablaDos').DataTable({
             ajax: {
-                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoEncargados.php',
+                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoEcargados.php',
                 dataSrc: 'data'
             },
             columns: [
@@ -368,15 +371,22 @@
         inicializarTabla();
     }
 
-    // Ejemplo de cómo podrías llamar a la función para actualizar la tabla después de un evento, por ejemplo, un botón
-    $('#actualizarTablaBtn').on('click', function () {
-        actualizarTabla();
-    });
+    function actualizarTablaDos() {
+        // Destruye la tabla actual antes de volver a inicializarla
+        $('#miTablaDos').DataTable().destroy();
+        inicializarTablaDos();
+    }
 
     $('#verificar').on('click', function () {
         enviar();
         actualizarTabla();
     });
+
+    $('#verificarDos').on('click', function () {
+        enviarEncargado()
+        actualizarTablaDos();
+    });
+
 
     function enviar() {
 
@@ -481,8 +491,9 @@
             buscarNombre(llenarNomina(document.getElementById("txtNomina").value));
         }
     }
+
     function buscarNombre(nomina) {
-        $.getJSON('https://arketipo.mx/Controlling/BonoSalida/dao/DaoNombre.php?nomina='+nomina, function (data) {
+        $.getJSON('https://arketipo.mx/Controlling/BonoSalida/dao/DaoNombre.php?nomina=' + nomina, function (data) {
             document.getElementById("txtNombre").value = data.data[0].NomUser;
         });
     }
@@ -510,6 +521,75 @@
             return nomina = "0" + nomina;
         }
         return nomina;
+    }
+
+    function enviarEncargado() {
+
+        var id = document.getElementById('txtIdEncargados');
+        var apu = document.getElementById('cbApuEncargados');
+        var supervisor = document.getElementById('txtSupervisorEncargados');
+        var shiftLeader = document.getElementById('txtShiftLeaderEncargados');
+
+        if (apu.value.trim() !== '') {
+            if (supervisor.value.trim() !== '') {
+                if (shiftLeader.value.trim() !== '') {
+
+                    const data = new FormData();
+
+                    if (id.value.trim() !== ''){
+                        data.append('id', id.value);
+                    }else{
+                        data.append('id', "n");
+                    }
+
+                    data.append('apu', apu.value.trim());
+                    data.append('supervisor', supervisor.value.trim());
+                    data.append('shiftLeader', shiftLeader.value.trim());-
+
+                    fetch('dao/daoEncargadosGuardar.php', {
+                        method: 'POST',
+                        body: data
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Enviado.', showConfirmButton: false, input: 'none',
+                                    text: 'Registro enviardo.'
+                                })
+                            } else {
+                                throw "Error en la llamada Ajax";
+                            }
+
+                        })
+                        .then(function (texto) {
+                            console.log(texto);
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        });
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...', showConfirmButton: false, input: 'none',
+                        text: 'Ingrese APU'
+                    })
+                }
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...', showConfirmButton: false, input: 'none',
+                    text: 'Ingrese la nombre'
+                })
+            }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...', showConfirmButton: false, input: 'none',
+                text: 'Ingrese el nómina'
+            })
+        }
     }
 </script>
 
