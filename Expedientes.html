@@ -256,6 +256,7 @@
 <script>
 
     function inicializarTabla(nomina) {
+        console.log('https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina='+nomina);
         $('#miTabla').DataTable({
             ajax: {
                 url: 'https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina='+nomina,
