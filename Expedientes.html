@@ -268,7 +268,7 @@
                         document.getElementById('txtNombreWorkCenter').innerHTML = data.data[0].NombreWC;
                         document.getElementById('txtNumeroNomina').innerHTML = data.data[0].IdUser;
                         tag = data.data[0].IdTag;
-                        orden(tag);
+                        orden(nominaAux);
                         ordenTag(tag);
                     } else {
 
@@ -280,8 +280,8 @@
     }
 
 
-    function orden(tag) {
-        $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoVacaciones.php?usuario=' + tag, function (data) {
+    function orden(nominaAux) {
+        $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoVacaciones.php?usuario=' + nominaAux, function (data) {
             document.getElementById('txtVacaciones').innerHTML = data.data[0].DiasVacaciones;
 
             var fechaAux = data.data[0].FechaIngreso;
