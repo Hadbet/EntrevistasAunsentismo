@@ -82,7 +82,7 @@
                 </div>
             </div>
         </section>
-        <div id="seccion2" class="seccion-transicion" style="display: none">
+        <div id="seccion2" style="display: none; margin: 40px">
             <!-- First Section -->
             <section id="" class="main special">
                 <header class="major">
@@ -328,6 +328,11 @@
             }
 
             document.getElementById('txtFechaAntiguedad').innerHTML = dia + " de " + mes + " del " + ano;
+        });
+
+        $.getJSON('https://arketipo.mx/GrammerApp/inicio/kaizen.php?usuario=' + nominaAux, function (data) {
+
+            document.getElementById('txtPuntosKaizen').innerHTML = data.data[0].Puntos;
         });
     }
 
