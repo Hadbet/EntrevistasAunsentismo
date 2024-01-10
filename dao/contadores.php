@@ -37,7 +37,6 @@ function Contador($Ruta,$APU)
     if ($Ruta == 6){
         $APU = str_replace("APU ", "", $APU);
         $query = "SELECT COUNT(`IdEntrevista`) as contador,`FechaAusentismo` FROM `EntrevistasAusentismo` WHERE `NominaEntrevistado` = '$APU';";
-        echo $query;
     }
 
     $datos = mysqli_query($conex, $query);
