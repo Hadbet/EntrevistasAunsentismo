@@ -241,7 +241,6 @@
                         seccionUno.style.display = 'none';
                         seccionDos.style.display = 'block';
                     }, 500);
-                    historicoUsuario();
                 }
             });
         });
@@ -270,6 +269,7 @@
                         tag = data.data[0].IdTag;
                         orden(nominaAux);
                         ordenTag(tag);
+                        resolve(true);
                     } else {
 
                     }
