@@ -281,7 +281,7 @@
 
 
     function orden(tag) {
-        $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoVacaciones.php?usuario=' + id, function (data) {
+        $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoVacaciones.php?usuario=' + tag, function (data) {
             document.getElementById('vacaciones').innerHTML = data.data[0].DiasVacaciones;
 
             var fechaAux = data.data[0].FechaIngreso;
