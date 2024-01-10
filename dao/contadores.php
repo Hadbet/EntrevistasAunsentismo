@@ -11,9 +11,8 @@ function Contador($Ruta,$APU)
 {
     $con = new LocalConector();
     $conex = $con->conectar();
-    if (strpos($APU, "0") !== true){
-        $APU = 'APU '.$APU;
-    }
+
+    $APU = 'APU '.$APU;
 
     if ($Ruta == 1){
         $query = "SELECT COUNT(`IdEntrevista`) as contador, `Encargado` FROM `EntrevistasAusentismo` GROUP BY `Encargado`;";
@@ -36,6 +35,7 @@ function Contador($Ruta,$APU)
     }
 
     if ($Ruta == 6){
+        $APU = str_replace("APU ", "", $APU);
         $query = "SELECT COUNT(`IdEntrevista`) as contador,`FechaAusentismo` FROM `EntrevistasAusentismo` WHERE `NominaEntrevistado` = '$APU';";
         echo $query;
     }
