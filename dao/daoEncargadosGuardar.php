@@ -4,7 +4,7 @@ include_once('db/db_RH.php');
 $Id=$_POST['id'];
 $APU=$_POST['apu'];
 $Supervisor=$_POST['supervisor'];
-$ShiftLeader=$_POST['shiftleader'];
+$ShiftLeader=$_POST['shiftLeader'];
 
 actualizarVacas($Id,$APU,$Supervisor,$ShiftLeader);
 
