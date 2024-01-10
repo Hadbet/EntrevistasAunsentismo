@@ -381,6 +381,7 @@
 
     function contadorGrafica(nomina) {
         return new Promise(function (resolve) {
+            console.log('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 +'&APU='+nomina)
             $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 +'&APU='+nomina, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
