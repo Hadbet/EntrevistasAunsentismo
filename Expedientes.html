@@ -125,6 +125,8 @@
                     </table>
                 </div>
 
+                <h2>Informacion de nominas</h2>
+
                 <ul class="statistics">
                     <li class="style1">
                         <span class="icon solid fa-code-branch"></span>
@@ -154,6 +156,8 @@
                 <header class="major">
                     <h2>Ausentismos</h2>
                 </header>
+
+                <canvas id="myChart"></canvas>
 
             </section>
 
@@ -270,6 +274,7 @@
                         orden(nominaAux);
                         ordenTag(tag);
                         resolve(true);
+                        contadorGrafica(nominaAux);
                     } else {
 
                     }
@@ -371,6 +376,56 @@
             return nomina = "0" + nomina;
         }
         return nomina;
+    }
+
+    function contadorGrafica(nomina) {
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 6 +'&APU='+nomina, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    var labels = [];
+                    var dataValues = [];
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        labels.push(data.data[i].FechaAusentismo);
+                        dataValues.push(data.data[i].contador);
+                    }
+
+                    // Llama a la función para inicializar o actualizar el gráfico
+                    actualizarGrafico(labels, dataValues, 'myChart');
+
+                    resolve();  // Resuelve la promesa después de completar la operación
+                } else {
+                    // Puedes manejar el caso en que no haya datos si es necesario
+                    resolve();
+                }
+            });
+        });
+    }
+
+    function actualizarGrafico(labels, dataValues, chartId) {
+        const ctx = document.getElementById(chartId);
+
+        // Verifica si ya hay un gráfico existente y destrúyelo antes de crear uno nuevo
+        var existingChart = window[chartId + '_chart'];
+        if (existingChart instanceof Chart) {
+            existingChart.destroy();
+        }
+
+        // Asigna una nueva variable de gráfico específica para este chartId
+        window[chartId + '_chart'] = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'ShiftLeader',
+                    data: dataValues,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {}
+            }
+        });
     }
 
 </script>
