@@ -213,10 +213,18 @@
                 </div>
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">APU :</label>
-                    <select name="demo-category" id="cbEncargado" onchange="llenarShift()">
+                    <select name="demo-category" id="cbEncargado" onchange="llenarSuper()">
                         <option value="">- Seleccione -</option>
                     </select>
                 </div>
+
+                <div class="col-4 col-12-xsmall">
+                    <label style="text-align: center;">Supervisor :</label>
+                    <select name="demo-category" id="cbSupervisor" onchange="llenarShift()">
+                        <option value="">- Seleccione -</option>
+                    </select>
+                </div>
+
                 <div class="col-4 col-12-xsmall">
                     <label style="text-align: center;">ShiftLeader:</label>
                     <select name="demo-category" id="cbShiftLeader">
@@ -302,8 +310,21 @@
         });
     }
 
+    function llenarSuper() {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
+            var selectS = document.getElementById("cbShiftLeader");
+            selectS.innerHTML = "";
+            for (var i = 0; i < data.data.length; i++) {
+                var createOptionS = document.createElement("option");
+                createOptionS.text = data.data[i].ShiftLeader;
+                createOptionS.value = data.data[i].ShiftLeader;
+                selectS.appendChild(createOptionS);
+            }
+        });
+    }
+
     function llenarShift() {
-        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
+        $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
             var selectS = document.getElementById("cbShiftLeader");
             selectS.innerHTML = "";
             for (var i = 0; i < data.data.length; i++) {
