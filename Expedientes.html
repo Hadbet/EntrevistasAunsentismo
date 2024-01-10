@@ -282,7 +282,7 @@
 
     function orden(tag) {
         $.getJSON('https://arketipo.mx/GrammerApp/inicio/DaoVacaciones.php?usuario=' + tag, function (data) {
-            document.getElementById('vacaciones').innerHTML = data.data[0].DiasVacaciones;
+            document.getElementById('txtVacaciones').innerHTML = data.data[0].DiasVacaciones;
 
             var fechaAux = data.data[0].FechaIngreso;
             let divicionFecha = fechaAux.split('-');
