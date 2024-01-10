@@ -255,10 +255,10 @@
 
 <script>
 
-    function inicializarTabla() {
+    function inicializarTabla(nomina) {
         $('#miTabla').DataTable({
             ajax: {
-                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php',
+                url: 'https://arketipo.mx/RH/Entrevistas/dao/daoExpedienteUsuario.php?nomina='+nomina,
                 dataSrc: 'data'
             },
             columns: [
@@ -272,10 +272,6 @@
         });
     }
 
-    // Llama a la función al cargar la página
-    $(document).ready(function () {
-        inicializarTabla();
-    });
 
     window.onload = function () {
         var boton = document.getElementById("verificar");
@@ -322,6 +318,7 @@
                         ordenTag(tag);
                         resolve(true);
                         contadorGrafica(nominaAux);
+                        inicializarTabla(nominaAux);
                     } else {
 
                     }
