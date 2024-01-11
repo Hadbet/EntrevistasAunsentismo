@@ -99,11 +99,11 @@
 
 <div class="menuNavegacion" id="menuNavegacion">
     <a href="index.html">Entrevista</a>
-    <a href="#first">Historico</a>
+    <a href="#first">Histórico</a>
     <a href="Expedientes.html" class="active">Expedientes</a>
     <a href="dashboar.html">DashBoard</a>
-    <a href="#cta">Capacitacion</a>
-    <a href="Administracion.html">Administracion</a>
+    <a href="#cta">Capacitación</a>
+    <a href="Administracion.html">Administración</a>
 </div>
 
 
@@ -122,11 +122,11 @@
     <nav id="nav">
         <ul>
             <li><a href="index.html" class="active">Entrevista</a></li>
-            <li><a href="#first">Historico</a></li>
+            <li><a href="#first">Histórico</a></li>
             <li><a href="Expedientes.html">Expedientes</a></li>
             <li><a href="dashboar.html">DashBoard</a></li>
-            <li><a href="#cta">Capacitacion</a></li>
-            <li><a href="Administracion.html">Administracion</a></li>
+            <li><a href="#cta">Capacitación</a></li>
+            <li><a href="Administracion.html">Administración</a></li>
         </ul>
     </nav>
 
@@ -174,7 +174,7 @@
             <div class="row gtr-uniform">
 
                 <div class="col-12 col-12-medium" id="seccionHistorico">
-                    <h3>Ultimos registros del entrevistado</h3>
+                    <h3>Últimos registros del entrevistado</h3>
                     <div id="historico">
                     </div>
                     <code><a href="">Ver expediente del usuario</a></code>
@@ -510,6 +510,7 @@
                                             data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
                                             data.append('nominaEntrevistador', nominaEntrevistador);
                                             data.append('shiftLeader', shiftleader.value);
+                                            data.append('supervisor', supervisor.value);
 
                                             fetch('dao/daoGuardarEntrevista.php', {
                                                 method: 'POST',

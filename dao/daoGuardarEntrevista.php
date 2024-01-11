@@ -9,9 +9,10 @@ $Encargado=$_POST['encargado'];
 $Motivo=$_POST['motivo'];
 $NominaEntrevistador=$_POST['nominaEntrevistador'];
 $ShiftLeader=$_POST['shiftLeader'];
+$Supervisor=$_POST['supervisor'];
 
-registroUsu($Nomina,$Area,$FechaAusencia,$TipoAusentismo,$Encargado,$Motivo,$NominaEntrevistador,$ShiftLeader);
-function registroUsu($Nomina,$Area,$FechaAusencia,$TipoAusentismo,$Encargado,$Motivo,$NominaEntrevistador,$ShiftLeader){
+registroUsu($Nomina,$Area,$FechaAusencia,$TipoAusentismo,$Encargado,$Motivo,$NominaEntrevistador,$ShiftLeader,$Supervisor);
+function registroUsu($Nomina,$Area,$FechaAusencia,$TipoAusentismo,$Encargado,$Motivo,$NominaEntrevistador,$ShiftLeader,$Supervisor){
 
     $con = new LocalConector();
     $conex=$con->conectar();
@@ -20,7 +21,7 @@ function registroUsu($Nomina,$Area,$FechaAusencia,$TipoAusentismo,$Encargado,$Mo
     $Object->setTimezone(new DateTimeZone('America/Denver'));
     $DateAndTime = $Object->format("Y/m/d h:i:s");
 
-    $insertRegistro= "INSERT INTO `EntrevistasAusentismo`(`NominaEntrevistador`, `NominaEntrevistado`, `FechaRegistro`, `FechaAusentismo`, `TipoAusencia`, `Motivo`, `Area`, `Encargado`,`ShiftLeader`) VALUES ('$NominaEntrevistador','$Nomina','$DateAndTime','$FechaAusencia','$TipoAusentismo','$Motivo','$Area','$Encargado','$ShiftLeader')";
+    $insertRegistro= "INSERT INTO `EntrevistasAusentismo`(`NominaEntrevistador`, `NominaEntrevistado`, `FechaRegistro`, `FechaAusentismo`, `TipoAusencia`, `Motivo`, `Area`, `Encargado`,`ShiftLeader`,`Supervisor`) VALUES ('$NominaEntrevistador','$Nomina','$DateAndTime','$FechaAusencia','$TipoAusentismo','$Motivo','$Area','$Encargado','$ShiftLeader','$Supervisor')";
 
     $rsinsertUsu=mysqli_query($conex,$insertRegistro);
     mysqli_close($conex);
