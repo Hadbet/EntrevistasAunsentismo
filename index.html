@@ -24,7 +24,7 @@
             .imagenAux {
                 width: 50%;
                 margin-bottom: -90px !important;
-                margin-top: -250px;
+                margin-top: -200px;
             }
 
             .logoAux {
@@ -177,7 +177,7 @@
                     <h3>Últimos registros del entrevistado</h3>
                     <div id="historico">
                     </div>
-                    <code><a href="">Ver expediente del usuario</a></code>
+                    <code><a href="Expedientes.html">Ver expediente del usuario</a></code>
                 </div>
 
                 <div class="col-12 col-12-medium">
@@ -314,6 +314,10 @@
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
             var selectS = document.getElementById("cbSupervisor");
             selectS.innerHTML = "";
+
+            var selectA = document.getElementById("cbShiftLeader");
+            selectA.innerHTML = "";
+
 
             var createOptionDef = document.createElement("option");
             createOptionDef.text = "Seleccione";
