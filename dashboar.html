@@ -152,6 +152,17 @@
                     </ul>
                 </div>
 
+                <div class="col-12 col-12-xsmall" id="seccionSupervisor" style="display: none">
+                    <div class="spotlight" style="margin-bottom: 0px;">
+                        <div class="content">
+                            <header class="major">
+                                <h2>Ausencias por Supervisor.</h2>
+                            </header>
+                        </div>
+                    </div>
+                    <canvas id="myChart5"></canvas>
+                </div>
+
                 <div class="col-12 col-12-xsmall" id="seccionShift" style="display: none">
                     <div class="spotlight" style="margin-bottom: 0px;">
                         <div class="content">
@@ -480,27 +491,83 @@
         });
     }
 
+    // Contador Grafica 4
+
+    function contadorGraficaCinco(apu) {
+        return new Promise(function (resolve) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 7+'&APU='+apu, function (data) {
+                if (data && data.data && data.data.length > 0) {
+                    var labels = [];
+                    var dataValues = [];
+
+                    for (var i = 0; i < data.data.length; i++) {
+                        labels.push(data.data[i].Supervisor);
+                        dataValues.push(data.data[i].contador);
+                    }
+
+                    // Llama a la función para inicializar o actualizar el gráfico
+                    actualizarGraficoCinco(labels, dataValues, 'myChart5');
+
+                    resolve();  // Resuelve la promesa después de completar la operación
+                } else {
+                    // Puedes manejar el caso en que no haya datos si es necesario
+                    resolve();
+                }
+            });
+        });
+    }
+
+    function actualizarGraficoCinco(labels, dataValues, chartId) {
+        const ctx3 = document.getElementById(chartId);
+
+        // Verifica si ya hay un gráfico existente y destrúyelo antes de crear uno nuevo
+        var existingChart = window[chartId + '_chart'];
+        if (existingChart instanceof Chart) {
+            existingChart.destroy();
+        }
+
+        // Asigna una nueva variable de gráfico específica para este chartId
+        window[chartId + '_chart'] = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'ShiftLeader',
+                    data: dataValues,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {}
+            }
+        });
+    }
+
     function apuGraficas(apu) {
 
         document.getElementById("seccionShift").style.display = 'block';
         document.getElementById("seccionEncargado").style.display = 'block';
         document.getElementById("seccionTipo").style.display = 'block';
         document.getElementById("seccionNomina").style.display = 'block';
+        document.getElementById("seccionSupervisor").style.display = 'block';
 
         switch (apu) {
             case 1:
+                contadorGraficaCinco(apu)
                 contadorGraficaCuatro(apu);
                 contadorGraficaTres(apu);
                 contadorGraficaDos(apu);
                 contadorGrafica(apu);
                 break;
             case 2:
+                contadorGraficaCinco(apu)
                 contadorGraficaCuatro(apu);
                 contadorGraficaTres(apu);
                 contadorGraficaDos(apu);
                 contadorGrafica(apu);
                 break;
             case 3:
+                contadorGraficaCinco(apu)
                 contadorGraficaCuatro(apu);
                 contadorGraficaTres(apu);
                 contadorGraficaDos(apu);

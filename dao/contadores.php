@@ -39,6 +39,10 @@ function Contador($Ruta,$APU)
         $query = "SELECT COUNT(`IdEntrevista`) as contador,`FechaAusentismo` FROM `EntrevistasAusentismo` WHERE `NominaEntrevistado` = '$APU'  GROUP BY `FechaAusentismo`;";
     }
 
+    if ($Ruta == 7){
+        $query = "SELECT COUNT(`IdEntrevista`) as contador,`Supervisor` FROM `EntrevistasAusentismo` where `Encargado` = '$APU' GROUP BY `Supervisor`;";
+    }
+
     $datos = mysqli_query($conex, $query);
 
     $resultado = mysqli_fetch_all($datos, MYSQLI_ASSOC);

@@ -429,6 +429,7 @@
                                                 title: 'Enviado.', showConfirmButton: false, input: 'none',
                                                 text: 'Registro enviardo.'
                                             })
+                                            limpiar();
                                         } else {
                                             throw "Error en la llamada Ajax";
                                         }
@@ -523,6 +524,15 @@
         return nomina;
     }
 
+    function limpiar() {
+        document.getElementById('txtIdEncargados').value = '';
+        document.getElementById('txtSupervisorEncargados').value = '';
+        document.getElementById('txtShiftLeaderEncargados').value = '';
+        document.getElementById('txtNomina').value = '';
+        document.getElementById('txtNombre').value = '';
+        document.getElementById('txtPassword').value = '';
+    }
+
     function enviarEncargado() {
 
         var id = document.getElementById('txtIdEncargados');
@@ -557,6 +567,7 @@
                                     title: 'Enviado.', showConfirmButton: false, input: 'none',
                                     text: 'Registro enviardo.'
                                 })
+                                limpiar();
                             } else {
                                 throw "Error en la llamada Ajax";
                             }
