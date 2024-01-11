@@ -314,6 +314,12 @@
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoSupervisor.php?APU=' + document.getElementById("cbEncargado").value, function (data) {
             var selectS = document.getElementById("cbSupervisor");
             selectS.innerHTML = "";
+
+            var createOptionDef = document.createElement("option");
+            createOptionDef.text = "Seleccione";
+            createOptionDef.value = "";
+            selectS.appendChild(createOptionDef);
+
             for (var i = 0; i < data.data.length; i++) {
                 var createOptionS = document.createElement("option");
                 createOptionS.text = data.data[i].Supervisor;
@@ -327,6 +333,12 @@
         $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/daoShiftLeader.php?APU=' + document.getElementById("cbSupervisor").value, function (data) {
             var selectS = document.getElementById("cbShiftLeader");
             selectS.innerHTML = "";
+
+            var createOptionDefS = document.createElement("option");
+            createOptionDefS.text = "Seleccione";
+            createOptionDefS.value = "";
+            selectS.appendChild(createOptionDefS);
+
             for (var i = 0; i < data.data.length; i++) {
                 var createOptionS = document.createElement("option");
                 createOptionS.text = data.data[i].ShiftLeader;
@@ -464,6 +476,7 @@
         var tag = document.getElementById("txtTag");
         var tipoOtro = document.getElementById("txtTipo");
         var shiftleader = document.getElementById("cbShiftLeader");
+        var supervisor = document.getElementById("cbSupervisor");
 
         if (tag.value == numeroTag) {
             if (nomina != "") {
@@ -473,54 +486,61 @@
                             if (encargado.value != "") {
                                 if (motivo.value != "") {
                                     if (nominaEntrevistador.value != "") {
+                                        if (supervisor.value != "") {
 
-                                        /*
+                                            /*
                                         document.getElementById('first').style.display = 'none';
                                         document.getElementById('carga').style.display = 'block';
                                         document.getElementById('carga').innerHTML = '<div class="loading"><center><img src="images/carga.gif" height="350px"><br/>Un momento, por favor...</center></div>';
 
                                          */
-                                        const data = new FormData();
+                                            const data = new FormData();
 
-                                        data.append('nomina', nomina.trim());
-                                        data.append('area', area.trim());
-                                        data.append('fechaAusencia', fechaAusencia.value);
+                                            data.append('nomina', nomina.trim());
+                                            data.append('area', area.trim());
+                                            data.append('fechaAusencia', fechaAusencia.value);
 
-                                        if (banderaTipo) {
-                                            data.append('tipoAusentismo', tipoOtro.value);
-                                        } else {
-                                            data.append('tipoAusentismo', tipoAusentismo.value);
+                                            if (banderaTipo) {
+                                                data.append('tipoAusentismo', tipoOtro.value);
+                                            } else {
+                                                data.append('tipoAusentismo', tipoAusentismo.value);
+                                            }
+
+                                            data.append('encargado', encargado.value);
+                                            data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
+                                            data.append('nominaEntrevistador', nominaEntrevistador);
+                                            data.append('shiftLeader', shiftleader.value);
+
+                                            fetch('dao/daoGuardarEntrevista.php', {
+                                                method: 'POST',
+                                                body: data
+                                            })
+                                                .then(function (response) {
+                                                    if (response.ok) {
+                                                        Swal.fire({
+                                                            icon: 'success',
+                                                            title: 'Enviado.', showConfirmButton: false, input: 'none',
+                                                            text: 'Registro enviardo.'
+                                                        })
+                                                        location.reload();
+                                                    } else {
+                                                        throw "Error en la llamada Ajax";
+                                                    }
+
+                                                })
+                                                .then(function (texto) {
+                                                    console.log(texto);
+                                                })
+                                                .catch(function (err) {
+                                                    console.log(err);
+                                                });
+                                        }else{
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...', showConfirmButton: false, input: 'none',
+                                                text: 'Selecciones supervisor'
+                                            })
                                         }
-
-                                        data.append('encargado', encargado.value);
-                                        data.append('motivo', motivo.value.replace(/["'\\\/]/g, ''));
-                                        data.append('nominaEntrevistador', nominaEntrevistador);
-                                        data.append('shiftLeader', shiftleader.value);
-
-                                        fetch('dao/daoGuardarEntrevista.php', {
-                                            method: 'POST',
-                                            body: data
-                                        })
-                                            .then(function (response) {
-                                                if (response.ok) {
-                                                    Swal.fire({
-                                                        icon: 'success',
-                                                        title: 'Enviado.', showConfirmButton: false, input: 'none',
-                                                        text: 'Registro enviardo.'
-                                                    })
-                                                    location.reload();
-                                                } else {
-                                                    throw "Error en la llamada Ajax";
-                                                }
-
-                                            })
-                                            .then(function (texto) {
-                                                console.log(texto);
-                                            })
-                                            .catch(function (err) {
-                                                console.log(err);
-                                            });
-
                                     } else {
                                         Swal.fire({
                                             icon: 'error',
