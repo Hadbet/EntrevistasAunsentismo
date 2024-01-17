@@ -21,7 +21,7 @@ function Contador($Ruta,$APU,$FechaInicio,$FechaFin)
     }
 
     if ($Ruta == 2){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador, `ShiftLeader` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `ShiftLeader`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `ShiftLeader` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' and `FechaAusentismo` BETWEEN '$FechaInicio' and '$FechaFin' GROUP BY `ShiftLeader`;";
     }
 
     if ($Ruta == 3){
