@@ -211,7 +211,7 @@
             </div>
         </section>
 
-        <section class="main special seccion-transicion">
+        <section class="main special seccion-transicion"  id="seccionEncargado">
 
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
@@ -227,7 +227,7 @@
                 <div class="col-2 col-12-xsmall">
                     <label style="text-align: center;">ID:</label>
                     <input type="number" name="demo-name" id="txtIdEncargados" value="" placeholder="00012345"
-                           onkeyup="verificarConEnter(event)"/>
+                           onkeyup="verificarConEnter(event)" disabled/>
                 </div>
                 <div class="col-2 col-12-xsmall">
                     <label style="text-align: center;">APU:</label>
@@ -253,7 +253,6 @@
                         <li><input type="submit" value="Eliminar" id="eliminarDos" class="primary"
                                    style="background-color: #ea5455"/></li>
                     </ul>
-                    <button class="primary" onclick="llenarParametros();" style="background-color: #547fea">Editar o Eliminar</button>
                 </div>
             </div>
             <hr>
@@ -267,6 +266,7 @@
                             <th>APU</th>
                             <th>Supervisor</th>
                             <th>ShiftLeader</th>
+                            <th>Editar</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -327,8 +327,15 @@
         menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
 
-    function llenarParametros(){
+    function llenarParametros(id,apu,supervisor,shift){
+        document.getElementById("txtIdEncargados").value = id;
+        document.getElementById("txtSupervisorEncargados").value = supervisor;
+        document.getElementById("txtShiftLeaderEncargados").value = shift;
+        document.getElementById("cbApuEncargados").value = apu;
+        var elementoSuperior = document.getElementById("seccionEncargado");
 
+        // Utiliza scrollIntoView para desplazar la vista hacia arriba
+        elementoSuperior.scrollIntoView({ behavior: "smooth" });
     }
 
     function inicializarTabla() {
@@ -537,6 +544,11 @@
         document.getElementById('txtNomina').value = '';
         document.getElementById('txtNombre').value = '';
         document.getElementById('txtPassword').value = '';
+
+        document.getElementById('txtIdEncargados').value='';
+        document.getElementById('cbApuEncargados').value='';
+        document.getElementById('txtSupervisorEncargados').value='';
+        document.getElementById('txtShiftLeaderEncargados').value='';
     }
 
     function enviarEncargado() {
@@ -545,6 +557,8 @@
         var apu = document.getElementById('cbApuEncargados');
         var supervisor = document.getElementById('txtSupervisorEncargados');
         var shiftLeader = document.getElementById('txtShiftLeaderEncargados');
+
+
 
         if (apu.value.trim() !== '') {
             if (supervisor.value.trim() !== '') {
