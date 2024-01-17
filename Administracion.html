@@ -201,6 +201,7 @@
                             <th>Puesto</th>
                             <th>Rol</th>
                             <th>Password</th>
+                            <th>Editar</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -333,6 +334,20 @@
         document.getElementById("txtShiftLeaderEncargados").value = shift;
         document.getElementById("cbApuEncargados").value = apu;
         var elementoSuperior = document.getElementById("seccionEncargado");
+
+        // Utiliza scrollIntoView para desplazar la vista hacia arriba
+        elementoSuperior.scrollIntoView({behavior: "smooth"});
+    }
+
+    function llenarParametrosUsu(nomina, nombre, apu, puesto, rol, password) {
+        document.getElementById("txtNomina").value = nomina;
+        document.getElementById("txtNombre").value = nombre;
+        document.getElementById("cbEncargado").value = apu;
+        document.getElementById("cbPuesto").value = puesto;
+        document.getElementById("txtPassword").value = rol;
+        document.getElementById("cbRol").value = password;
+
+        var elementoSuperior = document.getElementById("seccion1");
 
         // Utiliza scrollIntoView para desplazar la vista hacia arriba
         elementoSuperior.scrollIntoView({behavior: "smooth"});
