@@ -211,7 +211,7 @@
             </div>
         </section>
 
-        <section class="main special seccion-transicion"  id="seccionEncargado">
+        <section class="main special seccion-transicion" id="seccionEncargado">
 
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
@@ -327,7 +327,7 @@
         menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
 
-    function llenarParametros(id,apu,supervisor,shift){
+    function llenarParametros(id, apu, supervisor, shift) {
         document.getElementById("txtIdEncargados").value = id;
         document.getElementById("txtSupervisorEncargados").value = supervisor;
         document.getElementById("txtShiftLeaderEncargados").value = shift;
@@ -335,7 +335,7 @@
         var elementoSuperior = document.getElementById("seccionEncargado");
 
         // Utiliza scrollIntoView para desplazar la vista hacia arriba
-        elementoSuperior.scrollIntoView({ behavior: "smooth" });
+        elementoSuperior.scrollIntoView({behavior: "smooth"});
     }
 
     function inicializarTabla() {
@@ -396,6 +396,11 @@
     });
 
     $('#verificarDos').on('click', function () {
+        enviarEncargado()
+        actualizarTablaDos();
+    });
+
+    $('#eliminarDos').on('click', function () {
         enviarEncargado()
         actualizarTablaDos();
     });
@@ -545,10 +550,10 @@
         document.getElementById('txtNombre').value = '';
         document.getElementById('txtPassword').value = '';
 
-        document.getElementById('txtIdEncargados').value='';
-        document.getElementById('cbApuEncargados').value='';
-        document.getElementById('txtSupervisorEncargados').value='';
-        document.getElementById('txtShiftLeaderEncargados').value='';
+        document.getElementById('txtIdEncargados').value = '';
+        document.getElementById('cbApuEncargados').value = '';
+        document.getElementById('txtSupervisorEncargados').value = '';
+        document.getElementById('txtShiftLeaderEncargados').value = '';
     }
 
     function enviarEncargado() {
@@ -564,9 +569,9 @@
 
                     const data = new FormData();
 
-                    if (id.value.trim() !== ''){
+                    if (id.value.trim() !== '') {
                         data.append('id', id.value);
-                    }else{
+                    } else {
                         data.append('id', "n");
                     }
 
@@ -612,6 +617,49 @@
                     text: 'Ingrese la nombre'
                 })
             }
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...', showConfirmButton: false, input: 'none',
+                text: 'Ingrese el nómina'
+            })
+        }
+    }
+
+    function eliminarEncargado() {
+
+        var id = document.getElementById('txtIdEncargados');
+
+        if (apu.value.trim() !== '') {
+
+            const data = new FormData();
+
+            data.append('id', id.value.trim());
+
+            fetch('dao/daoEncargadosEliminar.php', {
+                method: 'POST',
+                body: data
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Eliminado.', showConfirmButton: false, input: 'none',
+                            text: 'Registro enviardo.'
+                        })
+                        limpiar();
+                    } else {
+                        throw "Error en la llamada Ajax";
+                    }
+
+                })
+                .then(function (texto) {
+                    console.log(texto);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+
         } else {
             Swal.fire({
                 icon: 'error',
