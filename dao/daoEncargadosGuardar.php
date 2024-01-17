@@ -18,7 +18,7 @@ function actualizarVacas($Id,$APU,$Supervisor,$ShiftLeader) {
 
     mysqli_close($conex);
 
-    return $result;
+    //return $result;
 }
 
 ?>
