@@ -572,10 +572,11 @@
 
                     data.append('apu', apu.value.trim());
                     data.append('supervisor', supervisor.value.trim());
-                    data.append('shiftLeader', shiftLeader.value.trim());-
+                    data.append('shiftLeader', shiftLeader.value.trim());
+                    alert(id.value+"-"+apu.value.trim()+"-"+supervisor.value.trim()+"-"+shiftLeader.value.trim())
 
                     fetch('dao/daoEncargadosGuardar.php', {
-                        method: 'GET',
+                        method: 'POST',
                         body: data
                     })
                         .then(function (response) {

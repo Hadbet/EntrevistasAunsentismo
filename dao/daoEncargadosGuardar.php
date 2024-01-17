@@ -1,10 +1,10 @@
 <?php
 include_once('db/db_RH.php');
 
-$Id=$_GET['id'];
-$APU=$_GET['apu'];
-$Supervisor=$_GET['supervisor'];
-$ShiftLeader=$_GET['shiftLeader'];
+$Id=$_POST['id'];
+$APU=$_POST['apu'];
+$Supervisor=$_POST['supervisor'];
+$ShiftLeader=$_POST['shiftLeader'];
 
 actualizarVacas($Id,$APU,$Supervisor,$ShiftLeader);
 
