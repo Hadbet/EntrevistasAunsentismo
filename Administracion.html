@@ -630,7 +630,7 @@
 
         var id = document.getElementById('txtIdEncargados');
 
-        if (apu.value.trim() !== '') {
+        if (id.value.trim() !== '') {
 
             const data = new FormData();
 
@@ -664,7 +664,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...', showConfirmButton: false, input: 'none',
-                text: 'Ingrese el nómina'
+                text: 'No se selecciono ningun usuario'
             })
         }
     }
