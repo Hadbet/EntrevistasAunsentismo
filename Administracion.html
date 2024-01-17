@@ -253,6 +253,7 @@
                         <li><input type="submit" value="Eliminar" id="eliminarDos" class="primary"
                                    style="background-color: #ea5455"/></li>
                     </ul>
+                    <button class="primary" onclick="llenarParametros();" style="background-color: #547fea">Editar o Eliminar</button>
                 </div>
             </div>
             <hr>
@@ -326,6 +327,10 @@
         menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
 
+    function llenarParametros(){
+
+    }
+
     function inicializarTabla() {
         $('#miTabla').DataTable({
             ajax: {
@@ -353,7 +358,8 @@
                 {data: 'IdEncargado'},
                 {data: 'APU'},
                 {data: 'Supervisor'},
-                {data: 'ShiftLeader'}
+                {data: 'ShiftLeader'},
+                {data: 'boton'}
             ]
         });
     }
