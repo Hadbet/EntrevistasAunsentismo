@@ -317,9 +317,9 @@
             });
         });
     }
-    function contadorGrafica(apu) {
+    function contadorGrafica(apu,fechaInicio,fechaFinal) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 2 +'&APU='+apu, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 2 +'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -370,9 +370,9 @@
 
     // Contador Grafica 2
 
-    function contadorGraficaDos(apu) {
+    function contadorGraficaDos(apu,fechaInicio,fechaFinal) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 3 +'&APU='+apu, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 3 +'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -428,9 +428,9 @@
 
     // Contador Grafica 3
 
-    function contadorGraficaTres(apu) {
+    function contadorGraficaTres(apu,fechaInicio,fechaFinal) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 4+'&APU='+apu, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 4+'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -482,9 +482,9 @@
 
     // Contador Grafica 3
 
-    function contadorGraficaCuatro(apu) {
+    function contadorGraficaCuatro(apu,fechaInicio,fechaFinal) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 5+'&APU='+apu, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 5+'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -537,9 +537,9 @@
 
     // Contador Grafica 4
 
-    function contadorGraficaCinco(apu) {
+    function contadorGraficaCinco(apu,fechaInicio,fechaFinal) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 7+'&APU='+apu, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 7+'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -598,27 +598,30 @@
         document.getElementById("seccionNomina").style.display = 'block';
         document.getElementById("seccionSupervisor").style.display = 'block';
 
+        var fechaInicio = document.getElementById("txtFechaInicio");
+        var fechaFinal = document.getElementById("txtFechaFin");
+
         switch (apu) {
             case 1:
-                contadorGraficaCinco(apu)
-                contadorGraficaCuatro(apu);
-                contadorGraficaTres(apu);
-                contadorGraficaDos(apu);
-                contadorGrafica(apu);
+                contadorGraficaCinco(apu,fechaInicio,fechaFinal)
+                contadorGraficaCuatro(apu,fechaInicio,fechaFinal);
+                contadorGraficaTres(apu,fechaInicio,fechaFinal);
+                contadorGraficaDos(apu,fechaInicio,fechaFinal);
+                contadorGrafica(apu,fechaInicio,fechaFinal);
                 break;
             case 2:
-                contadorGraficaCinco(apu)
-                contadorGraficaCuatro(apu);
-                contadorGraficaTres(apu);
-                contadorGraficaDos(apu);
-                contadorGrafica(apu);
+                contadorGraficaCinco(apu,fechaInicio,fechaFinal)
+                contadorGraficaCuatro(apu,fechaInicio,fechaFinal);
+                contadorGraficaTres(apu,fechaInicio,fechaFinal);
+                contadorGraficaDos(apu,fechaInicio,fechaFinal);
+                contadorGrafica(apu,fechaInicio,fechaFinal);
                 break;
             case 3:
-                contadorGraficaCinco(apu)
-                contadorGraficaCuatro(apu);
-                contadorGraficaTres(apu);
-                contadorGraficaDos(apu);
-                contadorGrafica(apu);
+                contadorGraficaCinco(apu,fechaInicio,fechaFinal)
+                contadorGraficaCuatro(apu,fechaInicio,fechaFinal);
+                contadorGraficaTres(apu,fechaInicio,fechaFinal);
+                contadorGraficaDos(apu,fechaInicio,fechaFinal);
+                contadorGrafica(apu,fechaInicio,fechaFinal);
                 break;
             default:
                 console.log("Ejecutando código para otro valor de apu");

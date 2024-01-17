@@ -25,15 +25,15 @@ function Contador($Ruta,$APU,$FechaInicio,$FechaFin)
     }
 
     if ($Ruta == 3){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador, `TipoAusencia` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `TipoAusencia`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `TipoAusencia` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%'  and `FechaAusentismo` BETWEEN '$FechaInicio' and '$FechaFin' GROUP BY `TipoAusencia`;";
     }
 
     if ($Ruta == 4){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador, `Area` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `Area`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `Area` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%'  and `FechaAusentismo` BETWEEN '$FechaInicio' and '$FechaFin' GROUP BY `Area`;";
     }
 
     if ($Ruta == 5){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador, `NominaEntrevistado` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' GROUP BY `NominaEntrevistado`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `NominaEntrevistado` FROM `EntrevistasAusentismo` where `Encargado` like '%$APU%' and `FechaAusentismo` BETWEEN '$FechaInicio' and '$FechaFin' GROUP BY `NominaEntrevistado`;";
     }
 
     if ($Ruta == 6){
