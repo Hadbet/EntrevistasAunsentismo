@@ -42,7 +42,7 @@ function Contador($Ruta,$APU,$FechaInicio,$FechaFin)
     }
 
     if ($Ruta == 7){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador,`Supervisor` FROM `EntrevistasAusentismo` where `Encargado` = '$APU' GROUP BY `Supervisor`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador,`Supervisor` FROM `EntrevistasAusentismo` where `Encargado` = '$APU' and `FechaAusentismo` BETWEEN '$FechaInicio' and '$FechaFin' GROUP BY `Supervisor`;";
     }
 
     $datos = mysqli_query($conex, $query);

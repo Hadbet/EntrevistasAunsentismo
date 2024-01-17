@@ -539,6 +539,7 @@
 
     function contadorGraficaCinco(apu,fechaInicio,fechaFinal) {
         return new Promise(function (resolve) {
+            console.log('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 7+'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal);
             $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 7+'&APU='+apu+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFinal, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     var labels = [];
@@ -598,8 +599,8 @@
         document.getElementById("seccionNomina").style.display = 'block';
         document.getElementById("seccionSupervisor").style.display = 'block';
 
-        var fechaInicio = document.getElementById("txtFechaInicio");
-        var fechaFinal = document.getElementById("txtFechaFin");
+        var fechaInicio = document.getElementById("txtFechaInicio").value;
+        var fechaFinal = document.getElementById("txtFechaFin").value;
 
         switch (apu) {
             case 1:
