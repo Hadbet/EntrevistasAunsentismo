@@ -558,8 +558,6 @@
         var supervisor = document.getElementById('txtSupervisorEncargados');
         var shiftLeader = document.getElementById('txtShiftLeaderEncargados');
 
-
-
         if (apu.value.trim() !== '') {
             if (supervisor.value.trim() !== '') {
                 if (shiftLeader.value.trim() !== '') {
@@ -577,7 +575,7 @@
                     data.append('shiftLeader', shiftLeader.value.trim());-
 
                     fetch('dao/daoEncargadosGuardar.php', {
-                        method: 'POST',
+                        method: 'GET',
                         body: data
                     })
                         .then(function (response) {
