@@ -131,8 +131,28 @@
             </div>
 
             <div class="row gtr-uniform">
+                <div class="col-5 col-12-xsmall">
+                    <label style="text-align: center;">Fecha inicio:</label>
+                    <input type="date" name="demo-name" id="txtFechaInicio" value="" placeholder="00012345"
+                           onkeyup="verificarConEnter(event)"/>
+                </div>
+                <div class="col-5 col-12-xsmall">
+                    <label style="text-align: center;">Fecha final:</label>
+                    <input type="date" name="demo-name" id="txtFechaFin" value="" placeholder="Juan Perez Black"/>
+                </div>
 
-                <div class="col-12 col-12-xsmall">
+                <div class="col-2">
+                    <label style="text-align: center;color: white">boton</label>
+                    <ul class="actions" style="justify-content: center;">
+                        <li><input type="submit" value="Enviar" id="verificar" class="primary"/></li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+
+            <div class="row gtr-uniform">
+
+                <div class="col-12 col-12-xsmall" id="apusSeccion" style="display: none">
                     <ul class="statistics">
                         <li class="style3">
                             <span class="icon solid fa-code-branch"></span>
@@ -250,15 +270,31 @@
 
 <script>
 
+    window.onload = function () {
+
+        var boton = document.getElementById("verificar");
+
+        boton.addEventListener('click', function () {
+
+            var fechaInicio = document.getElementById("txtFechaInicio");
+            var fechaFinal = document.getElementById("txtFechaFin");
+
+            contadorApu(fechaInicio.value,fechaFinal.value);
+
+            document.getElementById("apusSeccion").style.display='block';
+
+        });
+
+    };
+
     function toggleMenu() {
         var menu = document.getElementById("menuNavegacion");
         menu.style.display = (menu.style.display === "block") ? "none" : "block";
     }
 
-    contadorApu();
-    function contadorApu() {
+    function contadorApu(fechaInicio,fechaFin) {
         return new Promise(function (resolve) {
-            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 1, function (data) {
+            $.getJSON('https://arketipo.mx/RH/Entrevistas/dao/contadores.php?ruta=' + 1+'&fechaInicio='+fechaInicio+'&fechaFinal='+fechaFin, function (data) {
                 if (data && data.data && data.data.length > 0) {
                     for (var i = 0; i < data.data.length; i++) {
 
@@ -367,6 +403,8 @@
             existingChart.destroy();
         }
 
+        var coloresPersonalizados = ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', /* ... otros colores */];
+
         // Asigna una nueva variable de gráfico específica para este chartId
         window[chartId + '_chart'] = new Chart(ctx2, {
             type: 'bar',
@@ -375,6 +413,7 @@
                 datasets: [{
                     label: 'ShiftLeader',
                     data: dataValues,
+                    backgroundColor: coloresPersonalizados,
                     borderWidth: 1
                 }]
             },
@@ -401,7 +440,6 @@
                         dataValues.push(data.data[i].contador);
                     }
 
-                    // Llama a la función para inicializar o actualizar el gráfico
                     actualizarGraficoTres(labels, dataValues, 'myChart');
 
                     resolve();  // Resuelve la promesa después de completar la operación
@@ -422,6 +460,8 @@
             existingChart.destroy();
         }
 
+        var coloresPersonalizados = ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', /* ... otros colores */];
+
         // Asigna una nueva variable de gráfico específica para este chartId
         window[chartId + '_chart'] = new Chart(ctx3, {
             type: 'bar',
@@ -430,6 +470,7 @@
                 datasets: [{
                     label: 'ShiftLeader',
                     data: dataValues,
+                    backgroundColor: coloresPersonalizados,
                     borderWidth: 1
                 }]
             },
@@ -474,6 +515,8 @@
             existingChart.destroy();
         }
 
+        var coloresPersonalizados = ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', /* ... otros colores */];
+
         // Asigna una nueva variable de gráfico específica para este chartId
         window[chartId + '_chart'] = new Chart(ctx3, {
             type: 'bar',
@@ -482,6 +525,7 @@
                 datasets: [{
                     label: 'ShiftLeader',
                     data: dataValues,
+                    backgroundColor: coloresPersonalizados,
                     borderWidth: 1
                 }]
             },
@@ -526,6 +570,8 @@
             existingChart.destroy();
         }
 
+        var coloresPersonalizados = ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', /* ... otros colores */];
+
         // Asigna una nueva variable de gráfico específica para este chartId
         window[chartId + '_chart'] = new Chart(ctx3, {
             type: 'bar',
@@ -534,6 +580,7 @@
                 datasets: [{
                     label: 'ShiftLeader',
                     data: dataValues,
+                    backgroundColor: coloresPersonalizados,
                     borderWidth: 1
                 }]
             },

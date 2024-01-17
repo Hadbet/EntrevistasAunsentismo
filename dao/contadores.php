@@ -4,10 +4,12 @@ include_once('db/db_RH.php');
 
 $Ruta = $_GET['ruta'];
 $APU = $_GET['APU'];
+$FechaInicio = $_GET['fechaInicio'];
+$FechaFin = $_GET['fechaFinal'];
 
-Contador($Ruta,$APU);
+Contador($Ruta,$APU,$FechaInicio,$FechaFin);
 
-function Contador($Ruta,$APU)
+function Contador($Ruta,$APU,$FechaInicio,$FechaFin)
 {
     $con = new LocalConector();
     $conex = $con->conectar();
@@ -15,7 +17,7 @@ function Contador($Ruta,$APU)
     $APU = 'APU '.$APU;
 
     if ($Ruta == 1){
-        $query = "SELECT COUNT(`IdEntrevista`) as contador, `Encargado` FROM `EntrevistasAusentismo` GROUP BY `Encargado`;";
+        $query = "SELECT COUNT(`IdEntrevista`) as contador, `Encargado` FROM `EntrevistasAusentismo` where `FechaAusentismo` BETWEEN '$FechaInicio' and '$FechaFin' GROUP BY `Encargado`;";
     }
 
     if ($Ruta == 2){
