@@ -229,7 +229,7 @@
             <div class="spotlight" style="margin-bottom: 0px;">
                 <div class="content">
                     <header class="major">
-                        <h2>Usuarios.</h2>
+                        <h2>Encargados.</h2>
                     </header>
                 </div>
             </div>
