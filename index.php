@@ -301,7 +301,7 @@
 
 <script>
 
-    alert('<?php $_SESSION["rol"]?>');
+    alert('<?php echo $_SESSION["rol"];?>');
 
     function toggleMenu() {
         var menu = document.getElementById("menuNavegacion");
