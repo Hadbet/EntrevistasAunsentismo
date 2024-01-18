@@ -32,11 +32,10 @@ if (isset($_POST['verificar'])) {
     }
 
     $statusLogin = obtenerRol($Nomina, $contra);
-    echo "<script>alert('$statusLogin')</script>";
 
     if ($statusLogin != null) {
         $_SESSION['nomina'] = $Nomina;
-        $_SESSIOM['rol'] = $statusLogin;
+        $_SESSION['rol'] = $statusLogin;
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.php'>";
     } else if ($statusLogin == 0) {
         echo "<script>alert('Acceso Denegado')</script>";
