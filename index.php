@@ -108,12 +108,12 @@
 <button class="botonFlotante" onclick="toggleMenu()">☰</button>
 
 <div class="menuNavegacion" id="menuNavegacion">
-    <a href="index.html">Entrevista</a>
-    <a href="#first">Histórico</a>
-    <a href="Expedientes.html" class="active">Expedientes</a>
-    <a href="dashboar.html">DashBoard</a>
-    <a href="#cta">Capacitación</a>
-    <a href="Administracion.html">Administración</a>
+    <a id="navEntrevista" href="index.html" class="active">Entrevista</a>
+    <a id="navHistorico" href="#first">Histórico</a>
+    <a id="navExpedientes" href="Expedientes.html">Expedientes</a>
+    <a id="navDashBoard" href="dashboar.html">DashBoard</a>
+    <a id="navCapacitacion" href="#cta">Capacitación</a>
+    <a id="navAdministracion" href="Administracion.html">Administración</a>
 </div>
 
 
@@ -300,8 +300,14 @@
 <script src="assets/js/main.js"></script>
 
 <script>
+    var rol = '<?php echo $_SESSION["rol"];?>';
 
-    alert('<?php echo $_SESSION["rol"];?>');
+    if (rol==='2'){
+        document.getElementById("navAdministracion").style.display='none';
+        document.getElementById("navDashBoard").style.display='none';
+        document.getElementById("navExpedientes").style.display='none';
+        document.getElementById("navHistorico").style.display='none';
+    }
 
     function toggleMenu() {
         var menu = document.getElementById("menuNavegacion");
