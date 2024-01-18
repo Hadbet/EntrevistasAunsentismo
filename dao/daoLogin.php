@@ -31,8 +31,6 @@ if (isset($_POST['verificar'])) {
         $Nomina = "0" . $Nomina;
     }
 
-    echo $Nomina,$contra;
-
     $statusLogin = cliente($Nomina, $contra);
 
     if ($statusLogin == 1) {
