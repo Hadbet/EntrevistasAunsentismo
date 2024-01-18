@@ -4,7 +4,7 @@
     <?php
     session_start();
 
-    if ($_SESSION["nomina"] == "" && $_SESSION["nomina"]== null && $_SESSION["email"]== "" && $_SESSION["email"]== null) {
+    if ($_SESSION["nomina"] == "" && $_SESSION["nomina"]== null && $_SESSION["rol"]== "" && $_SESSION["rol"]== null) {
         echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=index.html'>";
         session_destroy();
     }else{
@@ -300,6 +300,8 @@
 <script src="assets/js/main.js"></script>
 
 <script>
+
+    alert('<?php $_SESSION["rol"]?>');
 
     function toggleMenu() {
         var menu = document.getElementById("menuNavegacion");
