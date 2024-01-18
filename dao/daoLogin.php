@@ -1,6 +1,6 @@
 <?php
 
-require 'DaoUsuario.php';
+require 'daoUsuario.php';
 
 
 if (isset($_POST['verificar'])) {
