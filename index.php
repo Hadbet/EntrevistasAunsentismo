@@ -131,12 +131,12 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="index.html" class="active">Entrevista</a></li>
-            <li><a href="#first">Histórico</a></li>
-            <li><a href="Expedientes.html">Expedientes</a></li>
-            <li><a href="dashboar.html">DashBoard</a></li>
-            <li><a href="#cta">Capacitación</a></li>
-            <li><a href="Administracion.html">Administración</a></li>
+            <li><a id="navEntrevistaC" href="index.html" class="active">Entrevista</a></li>
+            <li><a id="navHistoricoC" href="#first">Histórico</a></li>
+            <li><a id="navExpedientesC" href="Expedientes.html">Expedientes</a></li>
+            <li><a id="navDashBoardC" href="dashboar.html">DashBoard</a></li>
+            <li><a id="navCapacitacionC" href="#cta">Capacitación</a></li>
+            <li><a id="navAdministracionC" href="Administracion.html">Administración</a></li>
         </ul>
     </nav>
 
@@ -307,6 +307,11 @@
         document.getElementById("navDashBoard").style.display='none';
         document.getElementById("navExpedientes").style.display='none';
         document.getElementById("navHistorico").style.display='none';
+
+        document.getElementById("navAdministracionC").style.display='none';
+        document.getElementById("navDashBoardC").style.display='none';
+        document.getElementById("navExpedientesC").style.display='none';
+        document.getElementById("navHistoricoC").style.display='none';
     }
 
     function toggleMenu() {
