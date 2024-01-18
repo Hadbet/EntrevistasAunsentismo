@@ -32,6 +32,7 @@ if (isset($_POST['verificar'])) {
     }
 
     $statusLogin = obtenerRol($Nomina, $contra);
+    echo "<script>alert('$statusLogin')</script>";
 
     if ($statusLogin != null) {
         $_SESSION['nomina'] = $Nomina;
