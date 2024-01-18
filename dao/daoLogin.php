@@ -31,6 +31,16 @@ if (isset($_POST['verificar'])) {
         $Nomina = "0" . $Nomina;
     }
 
+    $statusLogin = cliente($Nomina, $contra);
+
+    if ($statusLogin == 1) {
+        $_SESSION['nomina'] = $Nomina;
+        $_SESSIOM['contraseña'] = $contra;
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../index.php'>";
+    } else if ($statusLogin == 0) {
+        echo "<script>alert('Acceso Denegado')</script>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=../login.html'>";
+    }
 }
 
 if (isset($_POST['btnSalir'])) {
