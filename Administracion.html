@@ -185,6 +185,8 @@
                 <div class="col-12">
                     <ul class="actions" style="justify-content: center;">
                         <li><input type="submit" value="Enviar" id="verificar" class="primary"/></li>
+                        <li><input style="background-color: #ea5455" type="submit" value="Eliminar" id="eliminarUsu" class="primary"/></li>
+                        <li><input type="submit" value="Reset" id="reset" class="secondary"/></li>
                     </ul>
                 </div>
             </div>
@@ -344,8 +346,8 @@
         document.getElementById("txtNombre").value = nombre;
         document.getElementById("cbEncargado").value = apu;
         document.getElementById("cbPuesto").value = puesto;
-        document.getElementById("txtPassword").value = rol;
-        document.getElementById("cbRol").value = password;
+        document.getElementById("txtPassword").value = password;
+        document.getElementById("cbRol").value = rol;
 
         var elementoSuperior = document.getElementById("seccion1");
 
@@ -419,6 +421,16 @@
     $('#eliminarDos').on('click', function () {
         eliminarEncargado();
         actualizarTablaDos();
+    });
+
+
+    $('#eliminarUsu').on('click', function () {
+        eliminarUsuario();
+        actualizarTabla();
+    });
+
+    $('#reset').on('click', function () {
+        limpiar();
     });
 
 
@@ -653,6 +665,50 @@
             data.append('id', id.value.trim());
 
             fetch('dao/daoEncargadosEliminar.php', {
+                method: 'POST',
+                body: data
+            })
+                .then(function (response) {
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Eliminado.', showConfirmButton: false, input: 'none',
+                            text: 'Registro enviardo.'
+                        })
+                        limpiar();
+                    } else {
+                        throw "Error en la llamada Ajax";
+                    }
+
+                })
+                .then(function (texto) {
+                    console.log(texto);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...', showConfirmButton: false, input: 'none',
+                text: 'No se selecciono ningun usuario'
+            })
+        }
+    }
+
+
+    function eliminarUsuario() {
+
+        var id = document.getElementById('txtNomina');
+
+        if (id.value.trim() !== '') {
+
+            const data = new FormData();
+
+            data.append('id', id.value.trim());
+
+            fetch('dao/daoUsuariosEliminar.php', {
                 method: 'POST',
                 body: data
             })
