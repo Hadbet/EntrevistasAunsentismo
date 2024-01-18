@@ -97,12 +97,12 @@
 <button class="botonFlotante" onclick="toggleMenu()">☰</button>
 
 <div class="menuNavegacion" id="menuNavegacion">
-    <a href="index.html">Entrevista</a>
+    <a href="index.php">Entrevista</a>
     <a href="#first">Histórico</a>
-    <a href="Expedientes.html" class="active">Expedientes</a>
-    <a href="dashboar.html">DashBoard</a>
+    <a href="Expedientes.php" class="active">Expedientes</a>
+    <a href="dashboar.php">DashBoard</a>
     <a href="#cta">Capacitación</a>
-    <a href="Administracion.html">Administración</a>
+    <a href="Administracion.php">Administración</a>
 </div>
 
 <!-- Wrapper -->
@@ -119,12 +119,12 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="index.html">Entrevista</a></li>
+            <li><a href="index.php">Entrevista</a></li>
             <li><a href="#first">Histórico</a></li>
-            <li><a href="Expedientes.html">Expedientes</a></li>
-            <li><a href="dashboar.html" class="active">DashBoard</a></li>
+            <li><a href="Expedientes.php">Expedientes</a></li>
+            <li><a href="dashboar.php" class="active">DashBoard</a></li>
             <li><a href="#cta">Capacitación</a></li>
-            <li><a href="Administracion.html">Administración</a></li>
+            <li><a href="Administracion.php">Administración</a></li>
         </ul>
     </nav>
 

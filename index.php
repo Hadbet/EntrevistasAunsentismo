@@ -110,10 +110,10 @@
 <div class="menuNavegacion" id="menuNavegacion">
     <a id="navEntrevista" href="index.php" class="active">Entrevista</a>
     <a id="navHistorico" href="#first">Histórico</a>
-    <a id="navExpedientes" href="Expedientes.html">Expedientes</a>
-    <a id="navDashBoard" href="dashboar.html">DashBoard</a>
+    <a id="navExpedientes" href="Expedientes.php">Expedientes</a>
+    <a id="navDashBoard" href="dashboar.php">DashBoard</a>
     <a id="navCapacitacion" href="#cta">Capacitación</a>
-    <a id="navAdministracion" href="Administracion.html">Administración</a>
+    <a id="navAdministracion" href="Administracion.php">Administración</a>
 </div>
 
 
@@ -133,10 +133,10 @@
         <ul>
             <li><a id="navEntrevistaC" href="index.php" class="active">Entrevista</a></li>
             <li><a id="navHistoricoC" href="#first">Histórico</a></li>
-            <li><a id="navExpedientesC" href="Expedientes.html">Expedientes</a></li>
-            <li><a id="navDashBoardC" href="dashboar.html">DashBoard</a></li>
+            <li><a id="navExpedientesC" href="Expedientes.php">Expedientes</a></li>
+            <li><a id="navDashBoardC" href="dashboar.php">DashBoard</a></li>
             <li><a id="navCapacitacionC" href="#cta">Capacitación</a></li>
-            <li><a id="navAdministracionC" href="Administracion.html">Administración</a></li>
+            <li><a id="navAdministracionC" href="Administracion.php">Administración</a></li>
         </ul>
     </nav>
 
@@ -187,7 +187,7 @@
                     <h3>Últimos registros del entrevistado</h3>
                     <div id="historico">
                     </div>
-                    <code><a href="Expedientes.html">Ver expediente del usuario</a></code>
+                    <code><a href="Expedientes.php">Ver expediente del usuario</a></code>
                 </div>
 
                 <div class="col-12 col-12-medium">
