@@ -108,7 +108,7 @@
 <button class="botonFlotante" onclick="toggleMenu()">☰</button>
 
 <div class="menuNavegacion" id="menuNavegacion">
-    <a id="navEntrevista" href="index.html" class="active">Entrevista</a>
+    <a id="navEntrevista" href="index.php" class="active">Entrevista</a>
     <a id="navHistorico" href="#first">Histórico</a>
     <a id="navExpedientes" href="Expedientes.html">Expedientes</a>
     <a id="navDashBoard" href="dashboar.html">DashBoard</a>
@@ -131,7 +131,7 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a id="navEntrevistaC" href="index.html" class="active">Entrevista</a></li>
+            <li><a id="navEntrevistaC" href="index.php" class="active">Entrevista</a></li>
             <li><a id="navHistoricoC" href="#first">Histórico</a></li>
             <li><a id="navExpedientesC" href="Expedientes.html">Expedientes</a></li>
             <li><a id="navDashBoardC" href="dashboar.html">DashBoard</a></li>

@@ -1,6 +1,16 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <?php
+    session_start();
+
+    if ($_SESSION["nomina"] == "" && $_SESSION["nomina"]== null && $_SESSION["rol"]== "" && $_SESSION["rol"]== null) {
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=index.html'>";
+        session_destroy();
+    }else{
+        session_start();
+    }
+    ?>
     <title>Entrevistas Ausentismo</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
@@ -269,6 +279,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+
+    var rol = '<?php echo $_SESSION["rol"];?>';
+
+    if (rol==='2'){
+        window.location.href = 'index.php';
+    }
 
     window.onload = function () {
 
