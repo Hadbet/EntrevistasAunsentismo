@@ -102,7 +102,7 @@
 
 <div class="menuNavegacion" id="menuNavegacion">
     <a href="index.php">Entrevista</a>
-    <a href="#first">Histórico</a>
+    <a href="Historico.php">Histórico</a>
     <a href="Expedientes.php" class="active">Expedientes</a>
     <a href="dashboar.php">DashBoard</a>
     <a href="#cta">Capacitación</a>
@@ -124,7 +124,7 @@
     <nav id="nav">
         <ul>
             <li><a href="index.php">Entrevista</a></li>
-            <li><a href="#first">Histórico</a></li>
+            <li><a href="Historico.php">Histórico</a></li>
             <li><a href="Expedientes.php">Expedientes</a></li>
             <li><a href="dashboar.php">DashBoard</a></li>
             <li><a href="#cta">Capacitación</a></li>
