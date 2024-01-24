@@ -221,7 +221,7 @@
             columns: [
                 {data: 'NominaEntrevistado'},
                 {data: 'FechaAusentismo'},
-                {data: 'TipoAusentismo'},
+                {data: 'TipoAusencia'},
                 {data: 'Motivo'},
                 {data: 'Area'},
                 {data: 'Encargado'},
