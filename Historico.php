@@ -157,6 +157,7 @@
                             <th>Encargado</th>
                             <th>Supervisor</th>
                             <th>ShiftLeader</th>
+                            <th>Tag</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -226,7 +227,8 @@
                 {data: 'Area'},
                 {data: 'Encargado'},
                 {data: 'Supervisor'},
-                {data: 'ShiftLeader'}
+                {data: 'ShiftLeader'},
+                {data: 'Tag'}
             ]
         });
     }

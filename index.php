@@ -538,6 +538,7 @@
                                             data.append('nominaEntrevistador', nominaEntrevistador);
                                             data.append('shiftLeader', shiftleader.value);
                                             data.append('supervisor', supervisor.value);
+                                            data.append('tag', tag.value);
 
                                             fetch('dao/daoGuardarEntrevista.php', {
                                                 method: 'POST',
