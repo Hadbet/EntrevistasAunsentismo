@@ -505,7 +505,7 @@
         var shiftleader = document.getElementById("cbShiftLeader");
         var supervisor = document.getElementById("cbSupervisor");
 
-        if (tag.value == numeroTag) {
+        if (tag.value == numeroTag || tag.value == "9999") {
             if (nomina != "") {
                 if (area != "") {
                     if (fechaAusencia.value != "") {
