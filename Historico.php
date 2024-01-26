@@ -240,7 +240,10 @@
         inicializarTabla();
     });
 
-
+    function toggleMenu() {
+        var menu = document.getElementById("menuNavegacion");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
 </script>
 
 </body>
