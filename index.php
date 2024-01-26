@@ -114,6 +114,7 @@
     <a id="navDashBoard" href="dashboar.php">DashBoard</a>
     <a id="navCapacitacion" href="#cta">Capacitación</a>
     <a id="navAdministracion" href="Administracion.php">Administración</a>
+    <a href="login.html" style="color: darkred">Salir</a>
 </div>
 
 
@@ -137,6 +138,7 @@
             <li><a id="navDashBoardC" href="dashboar.php">DashBoard</a></li>
             <li><a id="navCapacitacionC" href="#cta">Capacitación</a></li>
             <li><a id="navAdministracionC" href="Administracion.php">Administración</a></li>
+            <li><a href="login.html" style="color: darkred">Salir</a></li>
         </ul>
     </nav>
 

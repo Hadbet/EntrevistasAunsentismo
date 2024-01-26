@@ -114,6 +114,7 @@
     <a href="dashboar.php">DashBoard</a>
     <a href="#cta">Capacitación</a>
     <a href="Administracion.php">Administración</a>
+    <a href="login.html" style="color: darkred">Salir</a>
 </div>
 
 <!-- Wrapper -->
@@ -136,6 +137,7 @@
             <li><a href="dashboar.php">DashBoard</a></li>
             <li><a href="#cta">Capacitación</a></li>
             <li><a href="Administracion.php">Administración</a></li>
+            <li><a href="login.html" style="color: darkred">Salir</a></li>
         </ul>
     </nav>
 
