@@ -5,7 +5,7 @@
     session_start();
 
     if ($_SESSION["nomina"] == "" && $_SESSION["nomina"]== null && $_SESSION["rol"]== "" && $_SESSION["rol"]== null) {
-        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=index.html'>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='1; URL=index.php'>";
         session_destroy();
     }else{
         session_start();
