@@ -25,14 +25,7 @@
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
-    <style>
-
-
-    </style>
-
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"/>
-
-
 </head>
 <body class="is-preload">
 

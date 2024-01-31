@@ -16,19 +16,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="stylesheet" href="lib/css/setneidepxe.css"/>
-
     <!-- CSS -->
     <link rel="stylesheet" href="lib/sweetalert2.css">
-
     <!-- JavaScript -->
     <script src="lib/sweetalert2.all.min.js"></script>
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"/>
-    <style>
-
-    </style>
 </head>
 <body class="is-preload">
 
