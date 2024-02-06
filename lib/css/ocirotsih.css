@@ -2,6 +2,10 @@
     transition: opacity 0.5s ease-in-out;
 }
 
+.btn-personalizado {
+    margin-left: 30px !important;
+}
+
 @media only screen and (min-width: 768px) {
     /* Estilos específicos para pantallas grandes */
     .logoAux {
