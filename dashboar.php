@@ -142,7 +142,7 @@
                     <div class="spotlight" style="margin-bottom: 0px;">
                         <div class="content">
                             <header class="major">
-                                <h2>Ausencias por encargado.</h2>
+                                <h2>Ausencias por Área.</h2>
                             </header>
                         </div>
                     </div>
