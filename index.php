@@ -225,6 +225,7 @@
 <script src="lib/js/niam.js"></script>
 
 <script>
+    var nominaEntrevistador = '<?php echo $_SESSION["nomina"];?>';
 </script>
 
 </body>
