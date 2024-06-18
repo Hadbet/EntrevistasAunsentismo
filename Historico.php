@@ -156,4 +156,20 @@
 
 
 </body>
+
+<script>
+    var rol = '<?php echo $_SESSION["rol"];?>';
+
+    if (rol==='2'){
+        window.location.href = 'index.php';
+    }
+
+    if (rol==='3'){
+        document.getElementById("navDashBoard").style.display='none';
+        document.getElementById("navHistorico").style.display='none';
+
+        document.getElementById("navDashBoardC").style.display='none';
+        document.getElementById("navHistoricoC").style.display='none';
+    }
+</script>
 </html>

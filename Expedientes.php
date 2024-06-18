@@ -249,7 +249,15 @@
 <script src="lib/js/setneidepxe.js"></script>
 
 <script>
+    var rol = '<?php echo $_SESSION["rol"];?>';
 
+    if (rol==='2'){
+        window.location.href = 'index.php';
+    }
+
+    if (rol==='3'){
+        window.location.href = 'index.php';
+    }
 </script>
 
 </body>

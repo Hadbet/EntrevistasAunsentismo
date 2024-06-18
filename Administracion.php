@@ -267,5 +267,18 @@
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
 <script src="lib/js/noicartsinimda.js"></script>
 <script src="lib/js/niam.js"></script>
+
+<script>
+    var rol = '<?php echo $_SESSION["rol"];?>';
+
+    if (rol==='2'){
+        window.location.href = 'index.php';
+    }
+
+    if (rol==='3'){
+        window.location.href = 'index.php';
+    }
+</script>
 </body>
+
 </html>

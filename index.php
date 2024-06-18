@@ -226,6 +226,29 @@
 
 <script>
     var nominaEntrevistador = '<?php echo $_SESSION["nomina"];?>';
+
+    var rol = '<?php echo $_SESSION["rol"];?>';
+
+    if (rol==='2'){
+        document.getElementById("navAdministracion").style.display='none';
+        document.getElementById("navDashBoard").style.display='none';
+        document.getElementById("navExpedientes").style.display='none';
+        document.getElementById("navHistorico").style.display='none';
+
+        document.getElementById("navAdministracionC").style.display='none';
+        document.getElementById("navDashBoardC").style.display='none';
+        document.getElementById("navExpedientesC").style.display='none';
+        document.getElementById("navHistoricoC").style.display='none';
+    }
+
+    if (rol==='3'){
+        document.getElementById("navDashBoard").style.display='none';
+        document.getElementById("navHistorico").style.display='none';
+
+        document.getElementById("navDashBoardC").style.display='none';
+        document.getElementById("navHistoricoC").style.display='none';
+    }
+
 </script>
 
 </body>
