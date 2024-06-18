@@ -30,12 +30,12 @@
 <button class="botonFlotante" onclick="toggleMenu()">☰</button>
 
 <div class="menuNavegacion" id="menuNavegacion">
-    <a href="index.php">Entrevista</a>
-    <a href="Historico.php">Histórico</a>
-    <a href="Expedientes.php" class="active">Expedientes</a>
-    <a href="dashboar.php">DashBoard</a>
-    <a href="#cta">Capacitación</a>
-    <a href="Administracion.php">Administración</a>
+    <a id="navEntrevista" href="index.php" class="active">Entrevista</a>
+    <a id="navHistorico" href="Historico.php">Histórico</a>
+    <a id="navExpedientes" href="Expedientes.php">Expedientes</a>
+    <a id="navDashBoard" href="dashboar.php">DashBoard</a>
+    <a id="navCapacitacion" href="#cta">Capacitación</a>
+    <a id="navAdministracion" href="Administracion.php">Administración</a>
     <a href="login.html" style="color: darkred">Salir</a>
 </div>
 
@@ -53,12 +53,12 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="index.php">Entrevista</a></li>
-            <li><a href="Historico.php">Histórico</a></li>
-            <li><a href="Expedientes.php" class="active">Expedientes</a></li>
-            <li><a href="dashboar.php">DashBoard</a></li>
-            <li><a href="#cta">Capacitación</a></li>
-            <li><a href="Administracion.php">Administración</a></li>
+            <li><a id="navEntrevistaC" href="index.php" class="active">Entrevista</a></li>
+            <li><a id="navHistoricoC" href="Historico.php">Histórico</a></li>
+            <li><a id="navExpedientesC" href="Expedientes.php">Expedientes</a></li>
+            <li><a id="navDashBoardC" href="dashboar.php">DashBoard</a></li>
+            <li><a id="navCapacitacionC" href="#cta">Capacitación</a></li>
+            <li><a id="navAdministracionC" href="Administracion.php">Administración</a></li>
             <li><a href="login.html" style="color: darkred">Salir</a></li>
         </ul>
     </nav>
